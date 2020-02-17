@@ -1,0 +1,22 @@
+<zk>
+
+	<window id="panel" title="" border="none" mode="modal" focus="true"
+		position="center" closable="true" width="30%"
+		apply="sgs.management.bank.controller.BankAddController">
+
+		<caption label="${labels.add.bank}" />
+
+		<vbox pack="center">
+			<div height="5px"></div>
+
+			<textbox id="txtName" width="600px"
+				placeholder="${labels.name.record}" />
+			<textbox id="txtAcronyms" width="200px"
+				placeholder="${labels.acronyms.record}" />
+			<hbox>
+				<button id="btnSave" label="${labels.save.record}" />
+				<button id="btnCancel" label="${labels.cancel.record}" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

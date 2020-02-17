@@ -1,0 +1,45 @@
+<zk>
+	<window id="winPayment" border="none" position="center" mode="modal"
+		width="30%" height="380px"
+		apply="sms.invoicing.sale.controller.PaymentController">
+
+		<caption label="${labels.payment.record}" />
+
+		<vbox>
+			<hbox>
+				<vbox>
+					<div sclass="clean" height="5px" />
+					<label value="${labels.payment.method}" />
+					<div sclass="clean" height="15px" />
+					<label value="${labels.value.record}" />
+					<div sclass="clean" height="20px" />
+					<label value="${labels.amount.to.pay}" />
+					<div sclass="clean" height="15px" />
+					<label value="${labels.change.record}" />
+				</vbox>
+				<div sclass="clean" width="20px" />
+				<vbox>
+					<combobox id="cbx_method" width="250px"
+						readonly="true" autodrop="true" buttonVisible="true">
+					</combobox>
+					<div sclass="clean" />
+					<doublebox id="value" placeholder="0.00" />
+					<doublebox id="amountToPay" readonly="true"
+						placeholder="0.00" />
+					<doublebox id="change" readonly="true"
+						value="0" />
+					<textbox id="txtTransacao"
+						placeholder="Transação numero" visible="true" />
+				</vbox>
+			</hbox>
+			<div sclass="clean" />
+			<hbox>
+				<button id="pay" label="${labels.pay.record}"
+					onClick="" />
+				<button id="cancel" label="${labels.cancel.record}"
+					onClick="" />
+
+			</hbox>
+		</vbox>
+	</window>
+</zk>

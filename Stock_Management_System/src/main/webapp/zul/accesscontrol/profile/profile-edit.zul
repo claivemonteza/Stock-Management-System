@@ -1,0 +1,29 @@
+<zk>
+
+	<window id="winEditProfile" title="" border="none" mode="modal" focus="true"
+		position="center" closable="true" width="50%"
+		apply="sms.access.profile.controller.ProfileEditController">
+
+		<caption label="${labels.modify.profile}" />
+		<vbox pack="center">
+			<div height="5px"></div>
+			<hbox>
+				<textbox id="txtName" width="400px" readonly="true"
+					placeholder="${labels.name.record}" />
+			</hbox>
+			<groupbox height="100%">
+				<caption label="${labels.transactions.record}" />
+				<listbox id="listTransactions" vflex="1" multiple="true"
+					sclass="list" checkmark="true">
+					<listhead>
+						<listheader label="${labels.all.record}" />
+					</listhead>
+				</listbox>
+			</groupbox>
+			<hbox>
+				<button id="btnSave" label="${labels.save.record}" />
+				<button id="btnCancel" label="${labels.cancel.record}" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

@@ -1,0 +1,29 @@
+<zk>
+	<style src="css/stily.css" />
+	
+	<window id="winLock" border="none" position="center"
+		mode="modal" width="600px"
+		apply="sms.access.user.controller.LockController">
+
+		
+		<div>
+			<vbox align="center">
+				<div  height="270px" width="540px"
+					align="center">
+					<image src="/imagens/login.png" width="540px" height="270px"/>
+				</div>
+				<div sclass="clean" />
+				<vbox align="center">
+					<textbox id="txtUsername" readonly="true"
+						sclass="texto" placeholder="${labels.user.name}" />
+					<textbox id="txtPassword" type="password"  focus="true"
+						placeholder="${labels.password.record}" sclass="texto" />
+					<div align="right">
+						<button id="btnLogin" sclass="login"
+							label="${labels.login.record}" />
+					</div>
+				</vbox>
+			</vbox>
+		</div>
+	</window>
+</zk>

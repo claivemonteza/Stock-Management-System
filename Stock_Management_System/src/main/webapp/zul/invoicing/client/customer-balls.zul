@@ -1,0 +1,62 @@
+<zk>
+	<style src="/css/clientInvoice.css" />
+	<vbox
+		apply="sms.invoicing.client.controller.CustomerBallsController">
+
+		<groupbox>
+			<caption label="${labels.client.record}" />
+			<hbox>
+				<textbox id="txtName" sclass="txtName"
+					placeholder="${labels.name.record}" readonly="true" />
+				<textbox id="txtNuit" sclass="txtNuit"
+					placeholder="${labels.nuit.record}" readonly="true" />
+			</hbox>
+		</groupbox>
+		<groupbox>
+			<caption label="${labels.invoices.record}" />
+			<listbox id="listbox" sclass="listbox1" 
+				multiple="true" checkmark="true">
+				<listhead>
+					<listheader label="${labels.invoice.record}"
+						width="40%" />
+					<listheader label="${labels.date.record}"
+						sort="auto" />
+					<listheader label="${labels.duedate.record}"
+						sort="auto" />
+					<listheader label="${labels.canceled.record}"
+						sort="auto" />
+					<listheader label="${labels.paid.out}" sort="auto" />
+					<listheader label="${labels.value.record}"
+						sort="auto" />
+				</listhead>
+			</listbox>
+		</groupbox>
+		<listbox id="lbx_total" sclass="list">
+			<listhead>
+				<listheader width="40%"></listheader>
+				<listheader sort="auto"></listheader>
+				<listheader sort="auto"></listheader>
+				<listheader sort="auto"></listheader>
+				<listheader sort="auto"></listheader>
+				<listheader sort="auto"></listheader>
+			</listhead>
+			<listitem>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell>
+					<label value="Total" sclass="labelText"></label>
+				</listcell>
+				<listcell label="0.00" sclass="labelText"></listcell>
+			</listitem>
+		</listbox>
+
+		<div align="right">
+			<button id="btnPrint" label="${labels.print.record}"
+				sclass="button" />
+			<button id="btnCancel" label="${labels.cancel.record}"
+				sclass="button" />
+		</div>
+	</vbox>
+</zk>

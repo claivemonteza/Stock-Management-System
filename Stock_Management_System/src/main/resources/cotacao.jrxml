@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cotacao" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0d6dea0e-6bdf-4751-97ba-0f0ad44b85e7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="413"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="573"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="stock"/>
+	<parameter name="REPORT_NAME" class="java.lang.String"/>
+	<parameter name="CLIENTE" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="IMAGE" class="java.io.InputStream"/>
+	<parameter name="REFERENCIA" class="java.lang.String"/>
+	<parameter name="DESIGNACAO" class="java.lang.String"/>
+	<parameter name="QUANTIDADE" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="TOTAL_UNITARIO" class="java.lang.String"/>
+	<parameter name="PRECO_VENDA" class="java.lang.String"/>
+	<parameter name="TOTAL" class="java.lang.String"/>
+	<parameter name="USER" class="java.lang.String"/>
+	<parameter name="USER_NAME" class="java.lang.String"/>
+	<parameter name="VENDA" class="java.lang.String"/>
+	<parameter name="DATA" class="java.lang.String"/>
+	<parameter name="NUIT" class="java.lang.String"/>
+	<parameter name="LOTE" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="SUBTOTAL" class="java.lang.String"/>
+	<parameter name="VALOR_IVA" class="java.lang.String"/>
+	<parameter name="IVA" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="VALIDO" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT stock.cotacao.referencia,
+	stock.entidade.designacao,
+	stock.produto.referencia,
+	stock.item.quantidade,
+	stock.produto.designacao,
+	stock.lote.preco_venda,
+	stock.item.total_unitario,
+	stock.venda.total,
+	stock.entidade.nuit,
+	stock.lote.referencia,
+	stock.produto.taxa_iva,
+	stock.venda.`subTotal`,
+	stock.venda.total_iva,
+	stock.venda.data,
+	stock.venda.data_validade
+FROM stock.cotacao,
+	stock.entidade,
+	stock.produto,
+	stock.item,
+	stock.lote,
+	stock.venda]]>
+	</queryString>
+	<field name="referencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="referencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cotacao"/>
+	</field>
+	<field name="designacao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="designacao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="entidade"/>
+	</field>
+	<field name="COLUMN_3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="referencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="quantidade" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="quantidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="COLUMN_5" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="designacao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="preco_venda" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="preco_venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lote"/>
+	</field>
+	<field name="total_unitario" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total_unitario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="nuit" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nuit"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="entidade"/>
+	</field>
+	<field name="COLUMN_10" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="referencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lote"/>
+	</field>
+	<field name="taxa_iva" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="taxa_iva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="subTotal" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="subTotal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="total_iva" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total_iva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="data" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="data_validade" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_validade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<background>
+		<band height="86" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="210" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="100" width="250" height="60" forecolor="#01040A" uuid="ad0e8107-d25a-4efe-9344-087b8d299503"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Av. Eduardo Mondlane, Nº. 212, Maputo   	                     Telef. 21303348 / 21309122  Fax: 21324179                       Email: somofer.vendas@unicomo.co.mz                          Website: www.unicomo.co.mz   ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="-20" y="0" width="842" height="100" uuid="09bb004c-d580-4250-9d3d-f763c9a48d90"/>
+				<imageExpression><![CDATA[$P{IMAGE}]]></imageExpression>
+			</image>
+			<rectangle radius="11">
+				<reportElement x="475" y="96" width="321" height="64" uuid="7f4928c1-652f-4ad3-90fd-a264adfa022c"/>
+			</rectangle>
+			<textField>
+				<reportElement x="480" y="100" width="312" height="60" uuid="f5736513-a12b-4c11-91a2-6dc080843c5a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CLIENTE}+": "+$F{designacao}+"\n"+
+$P{NUIT}+": "+$F{nuit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="189" width="250" height="20" uuid="f4bd2ea7-6cdf-4b24-8620-dcb4e6ab5608"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_NAME}+": "+$F{referencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="190" width="91" height="20" uuid="141b8f88-d282-4e98-9f31-32a85af4efd8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATA}+": "]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMM, yyyy">
+				<reportElement x="690" y="190" width="110" height="20" uuid="9356a9c3-5df9-4f8f-bc62-65ac41b1dd16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="189" width="100" height="20" uuid="bd42aed7-3021-4562-9c19-dafe8cabb607"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{VALIDO}+": "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="189" width="60" height="20" uuid="5f0deeb7-547e-4f84-a7ef-b9062e80a2d3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_validade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="80" height="20" backcolor="#CCCCCC" uuid="726022cf-4a6f-4b87-a1b1-5bda36121540"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REFERENCIA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="80" y="0" width="230" height="20" backcolor="#CCCCCC" uuid="13da7ae8-0b75-4bf4-aa6a-86a97bcdaa7f"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DESIGNACAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="390" y="0" width="111" height="20" backcolor="#CCCCCC" uuid="76d032d5-814e-4672-9257-24fa81c8b133"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRECO_VENDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="670" y="0" width="132" height="20" backcolor="#CCCCCC" uuid="24f423dd-b864-4754-ba79-e70ac98a3ab9"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_UNITARIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="310" y="0" width="80" height="20" backcolor="#CCCCCC" uuid="96c5f437-00ab-4f36-a35a-80e90922b48b"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LOTE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="501" y="0" width="100" height="20" backcolor="#CCCCCC" uuid="b83f431f-b4f3-47c8-9b4c-8fe7d4036c8f"/>
+				<box>
+					<pen lineWidth="2.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{QUANTIDADE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="600" y="0" width="70" height="20" backcolor="#CCCCCC" uuid="5aeea944-9bd4-49f8-bd5d-95c336e368ef"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{IVA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Prevent">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<textField>
+				<reportElement positionType="Float" x="80" y="0" width="230" height="20" uuid="93d7ad1c-98c7-4d47-9522-56559690d4c4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="56b90fc5-31e9-4a19-b75e-94598ad02d1c"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="501" y="0" width="100" height="20" uuid="6c865b1e-5690-4d60-92bf-7f9862c31e88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="0" width="132" height="20" uuid="ad1e0b8d-47f0-443d-b589-e79f5db626e4"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_unitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="111" height="20" uuid="985bab94-3d5f-4475-b9c5-9d85480b138f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{preco_venda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="80" height="20" uuid="17fa7e6d-6d8e-4e19-a332-20b426ef49b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="601" y="0" width="69" height="20" uuid="c9995a58-45af-47e7-bb37-6a515293be64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taxa_iva}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="70" splitType="Stretch">
+			<textField>
+				<reportElement x="580" y="0" width="100" height="20" uuid="e29f1da7-afc5-4570-b10a-13ba66094573"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SUBTOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="580" y="20" width="100" height="20" uuid="2ba0afbc-3b6a-48e3-b175-4eb2ed0606d7"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{VALOR_IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="0" width="122" height="20" uuid="18a11df5-8df6-4958-b82c-e6032706e886"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="20" width="122" height="20" uuid="a0fc6b2b-0f94-455d-b511-78dfcfbc20bd"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+					<paragraph lineSpacingSize="4.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_iva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="40" width="122" height="20" uuid="f4bd65e5-9e1d-4e76-8647-535636e3b7b6"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="580" y="40" width="100" height="20" uuid="6ecf45f3-88de-4029-b5e1-df018b127d00"/>
+				<box>
+					<pen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="580" y="0" width="222" height="1" uuid="34f3ed9f-93dd-4f04-a4c4-c6310c6fb019"/>
+				<box>
+					<pen lineWidth="2.0"/>
+				</box>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="170" height="20" uuid="a20cd4fa-5827-40c8-852e-f4678ef7e5e4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{USER}+": "+$P{USER_NAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="780" y="0" width="21" height="20" uuid="1772d99c-b9b4-4620-a15a-bfc44fbecc16"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

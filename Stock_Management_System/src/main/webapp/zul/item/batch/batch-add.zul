@@ -1,0 +1,62 @@
+<zk>
+	<style src="/css/style.css" />
+
+	<window id="panel" title="" border="none" mode="modal" focus="true"
+		position="center" closable="true" width="55%"
+		apply="sms.item.batch.controller.BatchAddController">
+
+		<caption label="${labels.add.batch}" />
+
+		<div sclass="detalhes">
+			<hbox>
+				<textbox id="txtCode"
+					placeholder="${labels.code.record}" />
+				<space></space>
+				<combobox id="cbx_product" width="600px"
+					sclass="combobox" readonly="false" autocomplete="true"
+					autodrop="true" buttonVisible="true"
+					placeholder="${labels.product.record}">
+					<comboitem label="" />
+				</combobox>
+			</hbox>
+			<div sclass="clean" />
+			<div sclass="left_session">
+				<groupbox>
+					<caption label="${labels.expiration.date}" />
+					<vbox>
+						<datebox id="dbManufacture" width="300px" sclass="date"
+							placeholder="${labels.date.manufacture}" />
+						<div></div>
+						<datebox id="dbExpiration" width="300px" sclass="date"
+							placeholder="${labels.expiration.date}" />
+					</vbox>
+				</groupbox>
+			</div>
+			<div sclass="center_session">
+				<groupbox>
+					<caption label="${labels.price.record}" />
+					<vbox>
+						<doublebox id="dbCost"
+							placeholder="${labels.cost.price}" />
+						<doublebox id="dbSale"
+							placeholder="${labels.sale.price}" />
+					</vbox>
+				</groupbox>
+			</div>
+			<div sclass="right_session">
+				<groupbox height="130px">
+					<caption label="${labels.amount.record}" />
+						<intbox id="iAmount" readonly="true" value="0"
+							constraint="no empty,  no negative" />
+				</groupbox>
+			</div>
+			<div sclass="clean" />
+			<hbox>
+				<button id="btnSave" label="${labels.save.record}"
+					sclass="button" />
+				<button id="btnCancel" label="${labels.cancel.record}"
+					sclass="button" />
+			</hbox>
+		</div>
+	</window>
+</zk>
