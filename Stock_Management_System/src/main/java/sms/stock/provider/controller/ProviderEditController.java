@@ -39,7 +39,7 @@ public class ProviderEditController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3427591684573675888L;
 
 	@Wire
-	private Window providerModify;
+	private Window winEditProvider;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -78,15 +78,15 @@ public class ProviderEditController extends GenericForwardComposer<Component> {
 			if (checkComponents()) {
 				details(providerSelected);
 				stockManager.update(providerSelected);
-				Messages.info_center(Labels.getLabel("messages.update"), providerModify);
+				Messages.info_center(Labels.getLabel("messages.update"), winEditProvider);
 				cleanUp();
 				UIHelper.refreshListBox("listProviders", "searchProvider", stockManager.allProviders(true), stockManager.allProviders());
 			}
 		} catch (NullPointerException ex) {
-			Messages.warning_center(Labels.getLabel("select.provider"), providerModify);
+			Messages.warning_center(Labels.getLabel("select.provider"), winEditProvider);
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLIntegrityConstraintViolationException ex) {
-			Messages.warning_center(Labels.getLabel("profile.already.exist"), providerModify);
+			Messages.warning_center(Labels.getLabel("profile.already.exist"), winEditProvider);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class ProviderEditController extends GenericForwardComposer<Component> {
 		txtMobile.setValue(null);
 		txtFax.setValue(null);
 		txtEmail.setValue(null);
-		providerModify.detach();
+		winEditProvider.detach();
 	}
 
 	private void details(Provider provider) {

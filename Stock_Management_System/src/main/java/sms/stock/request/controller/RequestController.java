@@ -40,7 +40,7 @@ import sms.util.Verifications;
 /**
  * The class that will controller all the functionalities of the view
  * 
- * @see ItemRequestManager
+ * @see ItemManager
  * @see StockManager
  * 
  * @author Claive Monteza

@@ -1,5 +1,6 @@
 package sms.util;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Set;
 
@@ -38,7 +39,7 @@ public class Mathematics {
 	 * This method verifies if the product reached the max quantity.
 	 * 
 	 * @param amount
-	 * @param batch
+	 * @param product
 	 * @return
 	 */
 	public static boolean availableQuantityOfProduct(int amount, Product product) {
@@ -67,8 +68,9 @@ public class Mathematics {
 	 * @param cost  return
 	 */
 	public static double calculcatePercentage(double price, double cost) {
+		DecimalFormat formato = new DecimalFormat("0.0");
 		/* ((price/cost)-1)*100 (price / cost) * 10 */
-		return ((price / cost) - 1) * 10;
+		return Double.parseDouble(formato.format(((price / cost) - 1) * 10));
 	}
 
 	/**

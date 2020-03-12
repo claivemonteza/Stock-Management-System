@@ -37,7 +37,7 @@ public class ProviderAddController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3427591684573675888L;
 
 	@Wire
-	private Window providerAdd;
+	private Window winNewProvider;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -77,21 +77,21 @@ public class ProviderAddController extends GenericForwardComposer<Component> {
 				details(provider);
 				if (checkProvider(provider)) {
 					stockManager.save(provider);
-					Messages.info_center(Labels.getLabel("messages.add"), providerAdd);
+					Messages.info_center(Labels.getLabel("messages.add"), winNewProvider);
 					cleanUp();
 					UIHelper.refreshListBox("listProviders", "searchProvider", stockManager.allProviders(true), stockManager.allProviders());
 				}
 			}
 		} catch (ConstraintViolationException | DataIntegrityViolationException
 				| SQLIntegrityConstraintViolationException ex) {
-			Messages.warning_center(Labels.getLabel("profile.already.exist"), providerAdd);
+			Messages.warning_center(Labels.getLabel("profile.already.exist"), winNewProvider);
 		}
 	}
 
 
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		providerAdd.detach();
+		winNewProvider.detach();
 	}
 
 	

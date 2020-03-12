@@ -11,7 +11,7 @@ import sms.GenericDAO;
 import sms.access.profile.model.Profile;
 
 /**
- * <code>ProfileDao</code> is the class that will make the search 
+ * <code>ProfileDao</code> is the class that will make all operations
  * at the database at the table profile.
  * 
  * @see Profile

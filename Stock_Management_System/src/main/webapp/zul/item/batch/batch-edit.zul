@@ -1,7 +1,7 @@
 <zk>
 	<style src="/css/style.css" />
 
-	<window id="panel" title="" border="none" mode="modal" focus="true"
+	<window id="winEditBatch" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="70%"
 		apply="sms.item.batch.controller.BatchEditController">
 

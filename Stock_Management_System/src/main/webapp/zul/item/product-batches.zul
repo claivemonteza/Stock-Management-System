@@ -1,87 +1,86 @@
 <zk>
-	<space />
 	<div apply="sms.item.product.controller.ProductBatchesController">
 		<div sclass="grid">
 			<div sclass="left">
 				<hbox>
-					<textbox id="txtCode" readonly="true"
-						width="200px" placeholder="${labels.code.record}"/>
-					<textbox id="txtName" readonly="true"
-						width="600px" placeholder="${labels.name.record}" />
+					<textbox id="txtCode" readonly="true" width="200px"
+						placeholder="${labels.code.record}" />
+					<textbox id="txtName" readonly="true" width="600px"
+						placeholder="${labels.name.record}" />
 				</hbox>
 			</div>
 			<div sclass="center">
-				<checkbox id="showActive" label="Show active"/>
+				<checkbox id="showActive" label="Show active" />
 
 				<checkbox id="showInactive"
-					label="${labels.show.inactive}"/>
+					label="${labels.show.inactive}" />
 			</div>
-			<div sclass="right"></div>
+			<div sclass="right">
+				<combobox id="cbx_search" sclass="search"
+					autocomplete="true" autodrop="false" buttonVisible="false"
+					placeholder="${labels.search.record}">
+					<template name="model">
+						<comboitem label="${each.code}"></comboitem>
+					</template>
+				</combobox>
+			</div>
 		</div>
 		<div sclass="clean"></div>
 		<div>
-			<hbox width="100%">
-				<groupbox>
-					<caption label="${labels.batch.list}" />
-					<listbox id="listbox" sclass="listbox" vflex="1">
-						<listhead>
-							<listheader
-								label="${labels.reference.record}" sort="auto" width="150px" />
-							<listheader
-								label="${labels.date.manufacture}" sort="auto" align="center" />
-							<listheader
-								label="${labels.expiration.date}" sort="auto" align="center" />
-							<listheader label="${labels.cost.price}"
-								sort="auto" align="center"/>
-							<listheader label="${labels.sale.price}"
-								sort="auto" align="center"/>
-							<listheader label="${labels.amount.record}"
-								sort="auto" align="center"/>
-						</listhead>
-					</listbox>
-				</groupbox>
-			</hbox>
+			<hbox>
+				<vbox>
+					<groupbox>
+						<caption label="${labels.batch.list}" />
+						<listbox id="listbox" sclass="listbox"
+							vflex="1">
+							<listhead>
+								<listheader
+									label="${labels.reference.record}" sort="auto" width="150px" />
+								<listheader
+									label="${labels.date.manufacture}" sort="auto" align="center" />
+								<listheader
+									label="${labels.expiration.date}" sort="auto" align="center" />
+								<listheader label="${labels.cost.price}"
+									sort="auto" align="center" />
+								<listheader label="${labels.sale.price}"
+									sort="auto" align="center" />
+								<listheader
+									label="${labels.amount.record}" sort="auto" align="center" />
+							</listhead>
+						</listbox>
+					</groupbox>
 
-			<listbox id="lbx_total" sclass="list">
-				<listhead>
-					<listheader align="left" width="120px"></listheader>
-					<listheader align="center" sort="auto"></listheader>
-					<listheader align="center" sort="auto"></listheader>
-					<listheader align="center" sort="auto"></listheader>
-					<listheader align="center" sort="auto"></listheader>
-					<listheader align="center" sort="auto"></listheader>
-				</listhead>
-				<listitem>
-					<listcell></listcell>
-					<listcell></listcell>
-					<listcell>
-						<label value="${labels.total.record}" sclass="labelText">
-						</label>
-					</listcell>
-					<listcell label="0.00">
-					</listcell>
-					<listcell label="0.00">
-					</listcell>
-					<listcell label="0">
-					</listcell>
-				</listitem>
-				<listitem>
-					<listcell></listcell>
-					<listcell></listcell>
-					<listcell></listcell>
-					<listcell></listcell>
-					<listcell>
-						<div align="right">
-							<button id="btnPrint" sclass="button"
-								label="${labels.print.record}"/>
-						</div>
-					</listcell>
-					<listcell>
-						<button id="btnCancel" sclass="button"
-							label="${labels.cancel.record}" />
-					</listcell>
-				</listitem>
-			</listbox>
+					<listbox id="lbx_total" sclass="list">
+						<listhead>
+							<listheader align="left" width="120px"></listheader>
+							<listheader align="center" sort="auto"></listheader>
+							<listheader align="center" sort="auto"></listheader>
+							<listheader align="center" sort="auto"></listheader>
+							<listheader align="center" sort="auto"></listheader>
+							<listheader align="center" sort="auto"></listheader>
+						</listhead>
+						<listitem>
+							<listcell></listcell>
+							<listcell></listcell>
+							<listcell>
+								<label value="${labels.total.record}"
+									sclass="labelText">
+								</label>
+							</listcell>
+							<listcell label="0.00"></listcell>
+							<listcell label="0.00"></listcell>
+							<listcell label="0"></listcell>
+						</listitem>
+					</listbox>
+				</vbox>
+				<vbox style="padding-top:15px">
+					<button id="btnNew" sclass="button" label="${labels.add.record}" />
+					<button id="btnDelete" sclass="button" label="${labels.delete.record}" />
+					<button id="btnActiveInactive" sclass="button" label="${labels.active.inactive}" />
+					<button id="btnPrint" sclass="button" label="${labels.print.record}" />
+					<button id="btnCancel" sclass="button" label="${labels.cancel.record}" />
+				</vbox>
+			</hbox>
 		</div>
 	</div>
 </zk>

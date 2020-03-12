@@ -1,6 +1,6 @@
 <zk>
 
-	<window id="providerModify" title="" border="none" mode="modal"
+	<window id="winEditProvider" border="none" mode="modal"
 		focus="true" position="center" closable="true" width="75%"
 		apply="sms.stock.provider.controller.ProviderEditController">
 

@@ -13,14 +13,16 @@ import sms.invoicing.item.model.SaleItem;
 import sms.invoicing.quotation.model.Quotation;
 
 /**
- * In this class we create all the query to
- * create, update, delete and search the
+ * <code>QuotationDao</code> is the class that will make the search at the database
+ * at the table quotation.
  * 
  * @see Quotation
  * @see GenericDAO
  * 
  * @author Claive Monteza
- *
+ * 
+ * @version 1.0
+ * @since 1.6
  */
 @Repository
 public class QuotationDao extends GenericDAO<Quotation> {
@@ -29,6 +31,12 @@ public class QuotationDao extends GenericDAO<Quotation> {
 		super(Quotation.class);
 	}
 
+	/**
+	 * Sum amount of all items and check if amount of item is low than product.
+	 * 
+	 * @param quotation
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<SaleItem> verificarConfomidadeDeItems(Quotation quotation) {
 		String hql = "from Item as item join fetch item.quotation as q left join item.product as p where q=:quotation and item.amount>product.amount";
@@ -37,6 +45,13 @@ public class QuotationDao extends GenericDAO<Quotation> {
 		return query.list();
 	}
 	
+	
+	/**
+	 * Search for a quotation that have the same code.
+	 * 
+	 * @param code
+	 * @return
+	 * */
 	public Quotation findByCode(String code) {
 		Session session = getSession();
 		Criteria criteria = session.createCriteria(Quotation.class);

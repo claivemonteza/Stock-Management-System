@@ -22,9 +22,9 @@ import sms.company.model.Stock;
 import sms.invoicing.client.model.Client;
 
 /**
- * <code>Sale</code> will show amount that will be paid and from with
- * @see Client.
+ * <code>Sale</code> will show amount that will be paid and from with client.
  * 
+ * @see Client
  * @see Stock
  * 
  * @author Claive Monteza

@@ -45,7 +45,7 @@ public class UserEditController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = 140530111955603215L;
 
 	@Wire
-	private Window panel;
+	private Window winEditUser;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -86,14 +86,14 @@ public class UserEditController extends GenericForwardComposer<Component> {
 			if (checkComponents()) {
 				details(userSelected);
 				accessManager.update(userSelected);
-				Messages.info_center(Labels.getLabel("messages.update"), panel);
+				Messages.info_center(Labels.getLabel("messages.update"), winEditUser);
 				crossCheck(userSelected); 
 				cleanUp();
 				//Executions.sendRedirect("main.zul");
 			}
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLIntegrityConstraintViolationException ex) {
-			Messages.warning_center(Labels.getLabel("user.already.exist"), panel);
+			Messages.warning_center(Labels.getLabel("user.already.exist"), winEditUser);
 		}
 	}
 
@@ -145,7 +145,7 @@ public class UserEditController extends GenericForwardComposer<Component> {
 		UIHelper.buildLanguageListbox(listLanguage);
 		UIHelper.clearListbox(listTransactions);
 		UIHelper.refreshListBox("listUsers", "searchUser", accessManager.allUsers(true), accessManager.allUsers());
-		panel.detach();
+		winEditUser.detach();
 	}
 
 	/**

@@ -1,8 +1,8 @@
 <zk>
 
-	<window id="panel" title="" border="none" mode="modal" focus="true"
+	<window id="winNewBank" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="30%"
-		apply="sgs.management.bank.controller.BankAddController">
+		apply="">
 
 		<caption label="${labels.add.bank}" />
 

@@ -16,7 +16,7 @@ import sms.management.bank.model.ViaBank;
  * This interface have all methods that will been use to save, update, delete
  * and search for the bank.
  * 
- * @see Bank
+ * @see ViaBank
  * 
  * @author Claive Monteza
  * 
@@ -25,7 +25,7 @@ import sms.management.bank.model.ViaBank;
  */
 public interface BankManager {
 
-	public void save(ViaBank bank)throws DataIntegrityViolationException, ConstraintViolationException, SQLIntegrityConstraintViolationException;
+	public void save(ViaBank viaBank)throws DataIntegrityViolationException, ConstraintViolationException, SQLIntegrityConstraintViolationException;
 
 	public Set<String> allBanks();
 	

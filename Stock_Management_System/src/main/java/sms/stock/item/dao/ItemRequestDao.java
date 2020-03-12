@@ -10,7 +10,18 @@ import sms.item.batch.model.Batch;
 import sms.stock.item.model.ItemRequest;
 import sms.stock.request.model.Request;
 
-//TODO Create documentation
+/**
+ * <code>ItemRequestDao</code> is the class that will make the search at the database
+ * at the table item request.
+ * 
+ * @see ItemRequest
+ * @see GenericDAO
+ * 
+ * @author Claive Monteza
+ * 
+ * @version 1.0
+ * @since 1.6
+ */
 @Repository
 public class ItemRequestDao extends GenericDAO<ItemRequest> {
 
@@ -18,6 +29,12 @@ public class ItemRequestDao extends GenericDAO<ItemRequest> {
 		super(ItemRequest.class);
 	}
 
+	/**
+	 * Search all item that have batch.
+	 * 
+	 * @param request
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<ItemRequest> requestDetails(Request request) {
 		String hql = "from ItemRequest as ir join fetch ir.request as request where request=:request";
@@ -26,6 +43,13 @@ public class ItemRequestDao extends GenericDAO<ItemRequest> {
 		return query.list();
 	}
 
+	
+	/**
+	 * SUM all amount of item that have batch
+	 * 
+	 * @param batch
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public int totalAmount(Batch batch) {
 

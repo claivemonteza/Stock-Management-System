@@ -56,10 +56,9 @@
 					</listbox>
 				</groupbox>
 				<div>
-					<vbox align="center">
-						<div sclass="clean"></div>
+					<vbox align="center" style="padding-top:15px">
 						<button id="btnBatches"
-							label="${labels.all.lots.product}" />
+							label="${labels.batches.record}" />
 						<button id="btnTransations"
 							label="Transaction" />
 					</vbox>

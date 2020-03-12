@@ -20,7 +20,7 @@ import sms.management.bank.model.ViaBank;
  * This class call the BankDao and implments all the methods of the
  * interface.
  * 
- * @see BankDao
+ * @see ViaBankDao
  * @see BankManager
  * 
  * @author Claive Monteza

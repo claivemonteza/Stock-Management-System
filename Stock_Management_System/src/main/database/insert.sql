@@ -97,12 +97,11 @@ INSERT INTO `company` VALUES (NULL,1);
 INSERT INTO `transaction` VALUES 
 (1,'','101','profile.record','accesscontrol/profile/profile-list.zul'),
 (2,'','102','user.record','accesscontrol/user/user-lits.zul'),
-(3,'','201','batch.record','item/batch/batch-list.zul'),
-(4,'','202','product.record','item/product/product-list.zul'),
-(5,'','203','provider.record','stock/provider/provider-list.zul'),
-(6,'','204','request.record','stock/request.zul'),
-(7,'','301','client.record','invoicing/client/client-list.zul'),
-(8,'','302','sale.record','invoicing/sale.zul');
+(3,'','201','product.record','item/product/product-list.zul'),
+(4,'','202','provider.record','stock/provider/provider-list.zul'),
+(5,'','203','request.record','stock/request.zul'),
+(6,'','301','client.record','invoicing/client/client-list.zul'),
+(7,'','302','sale.record','invoicing/sale.zul');
 
 --
 -- Dumping data for table `profile`
@@ -123,8 +122,7 @@ INSERT INTO `profile_transaction` VALUES
 (1,4),
 (1,5),
 (1,6),
-(1,7),
-(1,8);
+(1,7);
 
 
 -- Dumping data for table `user`
@@ -147,12 +145,10 @@ INSERT INTO `user_transaction` VALUES
 (1,5),
 (1,6),
 (1,7),
-(1,8),
 (2,1),
 (2,2),
 (2,3),
 (2,4),
 (2,5),
 (2,6),
-(2,7),
-(2,8);
+(2,7);

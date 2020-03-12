@@ -1,6 +1,6 @@
 <zk>
 
-	<window id="winSearch" mode="modal" border="none" width="700px"
+	<window id="winProductSearch" mode="modal" border="none" width="700px"
 		height="540px" closable="true"
 		apply="sms.item.product.controller.ProductSearchController">
 

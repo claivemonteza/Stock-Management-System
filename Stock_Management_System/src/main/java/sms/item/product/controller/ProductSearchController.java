@@ -35,7 +35,7 @@ public class ProductSearchController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = 8210611026358965455L;
 
 	@Wire
-	private Window winSearch;
+	private Window winProductSearch;
 	@Wire
 	private Combobox cbx_pesquisar;
 	@Wire
@@ -52,13 +52,13 @@ public class ProductSearchController extends GenericForwardComposer<Component> {
 	}
 
 	public void onClick$btnCancel(Event e) {
-		winSearch.detach();
+		winProductSearch.detach();
 	}
 
 	public void onClick$btnOk(Event e) {
 		Product product = listbox.getSelectedItem().getValue();
 		selectedProduct(product);
-		winSearch.detach();
+		winProductSearch.detach();
 	}
 
 	public void onSelect$cbx_pesquisar(Event e) {

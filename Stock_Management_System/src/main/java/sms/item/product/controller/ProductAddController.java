@@ -45,7 +45,7 @@ public class ProductAddController extends GenericForwardComposer<Component> {
 	 */
 	private static final long serialVersionUID = -3713209471379347892L;
 	@Wire
-	private Window productAdd;
+	private Window winNewProduct;
 	@Wire
 	private Textbox txtCode;
 	@Wire
@@ -101,12 +101,12 @@ public class ProductAddController extends GenericForwardComposer<Component> {
 				if (itemManager.findByCode(product.getCode()) == null) {
 					if (itemManager.findByName(product.getName()) == null) {
 						itemManager.save(product);
-						Messages.info_center(Labels.getLabel("messages.add"), productAdd);
+						Messages.info_center(Labels.getLabel("messages.add"), winNewProduct);
 						cleanUp();
 						list(product);
 						UIHelper.refreshListBox("listProducts", "searchProduct", itemManager.allProducts(true),
 								itemManager.allProducts());
-						productAdd.detach();
+						winNewProduct.detach();
 					} else {
 						Messages.warning_right(Labels.getLabel("product.name.already.exist"), txtName);
 					}
@@ -122,7 +122,7 @@ public class ProductAddController extends GenericForwardComposer<Component> {
 
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		productAdd.detach();
+		winNewProduct.detach();
 	}
 
 	private void details(Product product) {
@@ -154,6 +154,10 @@ public class ProductAddController extends GenericForwardComposer<Component> {
 			if (!UIHelper.field(txtName)) {
 				if (!UIHelper.selection(cbxCategory)) {
 					return true;
+				}else {
+					if(!UIHelper.field(cbxCategory)) {
+						return true;
+					}
 				}
 			}
 		}

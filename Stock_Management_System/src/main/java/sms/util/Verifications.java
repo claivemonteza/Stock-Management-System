@@ -27,7 +27,7 @@ public class Verifications {
 	/**
 	 * This method will check if the list is empty or not.
 	 * 
-	 * @param List
+	 * @param list
 	 * @return
 	 */
 	public static boolean emptyOrNull(List<?> list) {

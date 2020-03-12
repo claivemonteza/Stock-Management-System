@@ -69,7 +69,9 @@ public class MathematicsTest {
 	@SuppressWarnings("static-access")
 	@Test
 	void testCalculcatePercentage() {
+		
 		assertEquals(6, mat.calculcatePercentage(80, 50));
+		
 	}
 
 	/**

@@ -16,9 +16,9 @@ import sms.company.model.Stock;
 import sms.stock.provider.model.Provider;
 
 /**
- * <code>Request</code> will show amount that will be paid and from with
- * @see Provider.
+ * <code>Request</code> will show amount that will be paid and from with provider.
  * 
+ * @see Provider
  * @see Stock
  * 
  * @author Claive Monteza

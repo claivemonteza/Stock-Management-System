@@ -42,7 +42,7 @@ import sms.util.Messages;
  *
  * @version 1.0
  * @since 1.6
- */
+ **/
 public class MainController extends GenericForwardComposer<Component> {
 
 	/**
@@ -83,7 +83,8 @@ public class MainController extends GenericForwardComposer<Component> {
 
 	/**
 	 * Log out on the system
-	 */
+	 * 
+	 **/
 	@Listen("onClick = #logoutMenuItem")
 	public void onClick$logoutMenuItem(Event e) {
 		Sessions.getCurrent().invalidate();
@@ -93,7 +94,8 @@ public class MainController extends GenericForwardComposer<Component> {
 
 	/**
 	 * will open the panel to change the password
-	 */
+	 *
+	 **/
 	@Listen("onClick =#changePasswordMenuItem")
 	public void onClick$changePasswordMenuItem(Event e) {
 		Executions.createComponents("accesscontrol/user/change-password.zul", null, null);
@@ -101,7 +103,7 @@ public class MainController extends GenericForwardComposer<Component> {
 
 	/**
 	 * will lock the system
-	 */
+	 **/
 	@Listen("onClick =#lockMenuItem")
 	public void onClick$lockMenuItem(Event e) {
 		status = true;
@@ -113,7 +115,7 @@ public class MainController extends GenericForwardComposer<Component> {
 	 * Message of wellcome
 	 * 
 	 * @param user
-	 */
+	 **/
 	private void wellcome() {
 		try {
 			status = SessionHelper.getStatus();
@@ -138,8 +140,8 @@ public class MainController extends GenericForwardComposer<Component> {
 	/**
 	 * this method will build a menu if all transaction of the @see user
 	 * 
-	 * @param User
-	 */
+	 * @param user
+	 **/
 	// TODO Make new menu that is flexible When update the transaction of the user
 	public void buildMenu(User user) {
 		startCodeToMenu = new HashMap<String, MenuUsage>();
@@ -178,8 +180,8 @@ public class MainController extends GenericForwardComposer<Component> {
 
 	/**
 	 * clean all the components of menu bar
-	 * 
-	 */
+	 *
+	 **/
 	public void cleanUpMenu() {
 		startCodeToMenu.clear();
 		sistema.getChildren().clear();
@@ -200,7 +202,7 @@ public class MainController extends GenericForwardComposer<Component> {
 	 * report of all batch that have expiring date
 	 * 
 	 * @param user
-	 */
+	 **/
 	private void showWarnings(User user) {
 		if (user.isTransactionAccessible(Transaction.EXPIRING_PRODUCTS_REPORT)) {
 			ExpiringBatchesReportController.generateReport();
@@ -212,7 +214,7 @@ public class MainController extends GenericForwardComposer<Component> {
 	 * 
 	 * @param name
 	 * @param url
-	 */
+	 **/
 	public void createNewTab(String name, String url) {
 		Tab tab = new Tab(name);
 		tab.setClosable(true);
@@ -230,7 +232,7 @@ public class MainController extends GenericForwardComposer<Component> {
 	 * will add a new tab at tabbox and will view
 	 * 
 	 * @param controller
-	 */
+	 **/
 	public void bindUbindedTabToController(SelectorComposer<Component> controller) {
 		controllerToTab.put(controller, unbindedTab);
 		unbindedTab = null;
@@ -240,7 +242,7 @@ public class MainController extends GenericForwardComposer<Component> {
 	 * will close the tab and remove on the tabbox
 	 * 
 	 * @param controller
-	 */
+	 **/
 	public void closeControllersTab(SelectorComposer<Component> controller) {
 		controllerToTab.get(controller).close();
 		controllerToTab.remove(controller);

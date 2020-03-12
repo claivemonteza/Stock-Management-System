@@ -2,7 +2,7 @@
 	<style src="/css/" />
 
 	<space></space>
-	<div apply="sms.management.bank.controller.BankListController">
+	<div apply="">
 		<div>
 			<div sclass="grid">
 				<div sclass="left">

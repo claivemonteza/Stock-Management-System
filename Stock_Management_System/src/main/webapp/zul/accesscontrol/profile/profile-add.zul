@@ -1,6 +1,6 @@
 <zk>
 
-	<window id="winNewProfile" title="" border="none" mode="modal" focus="true"
+	<window id="winNewProfile" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="50%"
 		apply="sms.access.profile.controller.ProfileAddController">
 

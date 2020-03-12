@@ -126,7 +126,7 @@ public class ProductListController extends AutoClosableController {
 		try {
 			Product productBatches = listbox.getSelectedItem().getValue();
 			SessionHelper.setObject("productBatches", productBatches);
-			SessionHelper.getMainController().createNewTab(Labels.getLabel("all.lots.product"),
+			SessionHelper.getMainController().createNewTab(Labels.getLabel("batches.record"),
 					"item/product-batches.zul");
 		} catch (NullPointerException ex) {
 			Messages.warning_center(Labels.getLabel("select.product"), listbox);

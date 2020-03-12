@@ -32,7 +32,11 @@ public class ProductDao extends GenericDAO<Product> {
 		super(Product.class);
 	}
 
-	
+	/**
+	 * List all categories that have.
+	 * 
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public Set<String> allCategories(){
 		String hql = "Select p.category from Product as p order by p.category ASC";

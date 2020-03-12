@@ -47,7 +47,7 @@ public class ProductEditController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3713209471379347892L;
 
 	@Wire
-	private Window productModify;
+	private Window winEditProduct;
 	@Wire
 	private Textbox txtCode;
 	@Wire
@@ -127,7 +127,7 @@ public class ProductEditController extends GenericForwardComposer<Component> {
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
 		productSelected = null;
-		productModify.detach();
+		winEditProduct.detach();
 	}
 
 	private void fillFields() {

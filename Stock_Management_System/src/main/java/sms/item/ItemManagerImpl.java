@@ -25,7 +25,6 @@ import sms.item.product.model.Product;
  * 
  * @see BatchDao
  * @see ProductDao
- * @see ProductLogDao
  * 
  * @author Claive Monteza
  * 
@@ -117,7 +116,7 @@ public class ItemManagerImpl implements ItemManager {
 	
 	@Transactional
 	public Integer calculateAmountOfBatchActive(Product product, boolean active) {
-		return batchDao.calculateAmountOfBatchActive(product, active);
+		return batchDao.calculateAmountOfBatchWhereActive(product, active);
 	}
 
 	@Transactional

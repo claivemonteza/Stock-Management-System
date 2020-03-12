@@ -34,7 +34,7 @@ public class ChangePasswordController extends GenericForwardComposer<Component> 
 	 */
 	private static final long serialVersionUID = -7777494032672614736L;
 	@Wire
-	private Window win;
+	private Window winChangePassword;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -66,7 +66,7 @@ public class ChangePasswordController extends GenericForwardComposer<Component> 
 	public void onClick$btnSave(Event e) {
 		if(txtNewPassword.getValue().equals(txtConfirmPassword.getValue())){
 			if(accessManager.changePassword(userSelected, txtNewPassword.getValue())){
-				Messages.info_center(Labels.getLabel("password.changed"), win);
+				Messages.info_center(Labels.getLabel("password.changed"), winChangePassword);
 				cleanUp();
 			}else
 				Messages.error_right(Labels.getLabel("wrong.password"),txtPassword);
@@ -79,7 +79,7 @@ public class ChangePasswordController extends GenericForwardComposer<Component> 
 	 * */
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		win.detach();
+		winChangePassword.detach();
 	}
 	
 	/**

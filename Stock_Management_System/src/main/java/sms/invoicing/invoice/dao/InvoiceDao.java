@@ -10,8 +10,19 @@ import sms.GenericDAO;
 import sms.invoicing.client.model.Client;
 import sms.invoicing.invoice.model.Invoice;
 
-//TODO Create documentation
 
+/**
+ * <code>InvoiceDao</code> is the class that will make the search at the database
+ * at the table invoice.
+ * 
+ * @see Invoice
+ * @see GenericDAO
+ * 
+ * @author Claive Monteza
+ * 
+ * @version 1.0
+ * @since 1.6
+ */
 @Repository
 public class InvoiceDao extends GenericDAO<Invoice> {
 
@@ -19,6 +30,12 @@ public class InvoiceDao extends GenericDAO<Invoice> {
 		super(Invoice.class);
 	}
 	
+	
+	/**
+	 * Search for all invoice that any client didin't paid after pass the due date.
+	 * 
+	 * @return
+	 **/
 	@SuppressWarnings("unchecked")
 	public List<Invoice> invoiceForNotificarion() {
 		String hql = "from Invoice as invoice join fetch invoice.client as client WHERE invoice.paid = false and invoice.dueDate < CURRENT_DATE";
@@ -86,6 +103,15 @@ public class InvoiceDao extends GenericDAO<Invoice> {
 	}
 	
 	
+	/**
+	 * Search for all invoices that client didn't paid between date begin and date end and 
+	 * will have limit.
+	 * 
+	 * @param inicio
+	 * @param dataFim
+	 * @param nrRegisto
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Invoice> listaAntiguidadeSaldo(Date inicio, Date dataFim, int nrRegisto) {
 		String hql = "from Invoice as invoice join fetch invoice.client as client where invoice.paga=0 and (invoice.date between :inicio and :dataFim)";
@@ -96,6 +122,13 @@ public class InvoiceDao extends GenericDAO<Invoice> {
 		return query.list();
 	}
 	
+	
+	/**
+	 * Search all invoices that client didn't paid in the year.
+	 * 
+	 * @param year
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<Invoice> mesesFacturaAno(int year) {
 		String hql = "select distinct month(invoice.date) from Invoice as invoice where invoice.year=:year and invoice.paga=0";
@@ -103,7 +136,14 @@ public class InvoiceDao extends GenericDAO<Invoice> {
 		query.setParameter("year", year);
 		return query.list();
 	}
-
+	
+	/**
+	 * Sum all total invoices that didn't paid and between date begin and a date end.
+	 * 
+	 * @param dataInicio
+	 * @param dataFim
+	 * @return
+	 * */
 	public double valorAReceber(Date dataInicio, Date dataFim) {
 		String hql = "select sum(invoice.subTotal+invoice.totalIva-invoice.totalIva) from Invoice as invoice where invoice.paga=false and(invoice.date between :dataInicio and :dataFim)";
 		Query query = getSession().createQuery(hql);
@@ -118,6 +158,14 @@ public class InvoiceDao extends GenericDAO<Invoice> {
 
 	}
 
+	
+	/**
+	 * SUM all invoices of the month that client didn't paid on year.
+	 * 
+	 * @param month
+	 * @param year
+	 * @return
+	 * */
 	public double valorAReceber(int month, int year) {
 		String hql = "select sum(invoice.total-invoice.valorPago) from invoice as invoice where invoice.year=:year and month(invoice.date)=:month and invoice.paga=false";
 		Query query = getSession().createQuery(hql);

@@ -15,7 +15,7 @@ import sms.stock.request.model.Request;
 
 /**
  * <code>FornecedorDao</code> is the class that will make the search at the database
- * at the table fornecedor.
+ * at the table provider.
  * 
  * @see Provider
  * @see GenericDAO

@@ -10,8 +10,18 @@ import sms.invoicing.item.model.SaleItem;
 import sms.invoicing.sale.model.Sale;
 import sms.item.batch.model.Batch;
 
-//TODO Create documentation
-
+/**
+ * <code>SaleItemDao</code> is the class that will make the search at the database
+ * at the table SaleItem.
+ * 
+ * @see SaleItem
+ * @see GenericDAO
+ * 
+ * @author Claive Monteza
+ * 
+ * @version 1.0
+ * @since 1.6
+ */
 @Repository
 public class SaleItemDao extends GenericDAO<SaleItem> {
 
@@ -19,6 +29,12 @@ public class SaleItemDao extends GenericDAO<SaleItem> {
 		super(SaleItem.class);
 	}
 
+	/**
+	 * Search for all items that in the sale.
+	 * 
+	 * @param sale
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public List<SaleItem> allItems(Sale sale) {
 		String hql = "from SaleItem as i join fetch i.sale as s where s=:sale";
@@ -27,6 +43,12 @@ public class SaleItemDao extends GenericDAO<SaleItem> {
 		return query.list();
 	}
 
+	/**
+	 * Search for all items that have batch and SUM all amount of the same item.
+	 * 
+	 * @param batch
+	 * @return
+	 * */
 	@SuppressWarnings("unchecked")
 	public int totalAmount(Batch batch) {
 		int quantity = 0;

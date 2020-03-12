@@ -1,6 +1,6 @@
 <zk>
 
-	<window id="winEditProfile" title="" border="none" mode="modal" focus="true"
+	<window id="winEditProfile" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="50%"
 		apply="sms.access.profile.controller.ProfileEditController">
 

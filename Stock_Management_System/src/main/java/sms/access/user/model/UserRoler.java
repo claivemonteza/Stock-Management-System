@@ -35,7 +35,7 @@ public class UserRoler extends Identidade{
 	/**
 	 * 
 	 * @return
-	 */
+	 **/
 	public String getRole() {
 		return role;
 	}
@@ -43,7 +43,7 @@ public class UserRoler extends Identidade{
 	/**
 	 * 
 	 * @param role
-	 */
+	 **/
 	public void setRole(String role) {
 		this.role = role;
 	}

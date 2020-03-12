@@ -1,7 +1,7 @@
 <zk>
 	<style src="/css/style.css" />
 
-	<window id="productModify" title="" border="none" mode="modal"
+	<window id="winEditProduct" border="none" mode="modal"
 		focus="true" position="center" closable="true" width="75%"
 		apply="sms.item.product.controller.ProductEditController">
 

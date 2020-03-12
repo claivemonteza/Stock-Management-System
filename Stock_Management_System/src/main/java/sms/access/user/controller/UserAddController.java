@@ -47,7 +47,7 @@ public class UserAddController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = 140530111955603215L;
 
 	@Wire
-	private Window panel;
+	private Window winNewUser;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -78,7 +78,7 @@ public class UserAddController extends GenericForwardComposer<Component> {
 	 * */	
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		panel.detach();
+		winNewUser.detach();
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class UserAddController extends GenericForwardComposer<Component> {
 				if (checkPassword()) {
 					details(user);
 					accessManager.save(user);
-					Messages.info_center(Labels.getLabel("messages.add"), panel);
+					Messages.info_center(Labels.getLabel("messages.add"), winNewUser);
 					cleanUp();
 				}
 			}

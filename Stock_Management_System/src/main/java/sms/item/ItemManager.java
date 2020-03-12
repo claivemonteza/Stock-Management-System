@@ -20,7 +20,6 @@ import sms.item.product.model.Product;
  *
  * @see Batch
  * @see Product
- * @see ProductLog
  * 
  * @author Claive Monteza
  * 

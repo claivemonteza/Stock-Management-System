@@ -174,7 +174,6 @@ public class UserDao extends GenericDAO<User>{
 	 * Encrypt user password
 	 * 
 	 * @param user
-	 * @return
 	 */
 	public void encryptUserPassword(User user) {
 		String encryptedPassword = encrypt(user.getPassword());

@@ -1,7 +1,7 @@
 <zk>
 	<style src="/css/style.css" />
 
-	<window id="panel" title="" border="none" mode="modal" focus="true"
+	<window id="winNewBatch" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="55%"
 		apply="sms.item.batch.controller.BatchAddController">
 
@@ -13,8 +13,8 @@
 					placeholder="${labels.code.record}" />
 				<space></space>
 				<combobox id="cbx_product" width="600px"
-					sclass="combobox" readonly="false" autocomplete="true"
-					autodrop="true" buttonVisible="true"
+					sclass="combobox" readonly="true" autocomplete="false"
+					autodrop="false" buttonVisible="false"
 					placeholder="${labels.product.record}">
 					<comboitem label="" />
 				</combobox>

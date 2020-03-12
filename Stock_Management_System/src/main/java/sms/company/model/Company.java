@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.zkoss.zul.Image;
+
 import sms.Entidade;
 
 /**
@@ -29,21 +31,8 @@ import sms.Entidade;
 public class Company extends Entidade {
 
 	@Column(nullable = true)
-	private String logo;
+	private Image logo;
 
-	/**
-	 * @return the logo
-	 */
-	public String getLogo() {
-		return logo;
-	}
-
-	/**
-	 * @param logo the logo to set
-	 */
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
 
 	
 }

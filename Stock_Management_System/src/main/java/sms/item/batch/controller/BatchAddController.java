@@ -6,6 +6,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
@@ -15,6 +16,7 @@ import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Doublebox;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.Label;
+import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
@@ -45,7 +47,7 @@ public class BatchAddController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3713209471379347892L;
 
 	@Wire
-	private Window panel;
+	private Window winNewBatch;
 	@Wire
 	private Textbox txtCode;
 	@Wire
@@ -64,6 +66,7 @@ public class BatchAddController extends GenericForwardComposer<Component> {
 	@WireVariable
 	private ItemManager itemManager;
 
+	private Product product;
 
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
@@ -79,11 +82,12 @@ public class BatchAddController extends GenericForwardComposer<Component> {
 			if (checkComponents()) {
 				details(batch);
 				itemManager.save(batch);
-				Messages.info_center(Labels.getLabel("messages.add"), panel);
+				Messages.info_center(Labels.getLabel("messages.add"), winNewBatch);
 				// Inventario.quantidadeProduto();
 				cleanUp();
 				list(batch);
-				panel.detach();
+				 list2();
+				winNewBatch.detach();
 			}
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLIntegrityConstraintViolationException ex) {
@@ -93,7 +97,7 @@ public class BatchAddController extends GenericForwardComposer<Component> {
 
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		panel.detach();
+		winNewBatch.detach();
 	}
 
 	private void details(Batch batch) {
@@ -133,13 +137,24 @@ public class BatchAddController extends GenericForwardComposer<Component> {
 	private void fillFields() {
 		try {
 			String code = (String) SessionHelper.takeObject("batchCode");
-			Product product = (Product) SessionHelper.takeObject("product");
+			product = (Product) SessionHelper.takeObject("product");
 			txtCode.setValue(code);
 			UIHelper.setSelectedValueOnCombobox(cbx_product, product);
 		} catch (NullPointerException e) {
 		}
 	}
 
+	
+	private void list2() {
+		Listbox listbox = (Listbox) Sessions.getCurrent().getAttribute("listBatches");
+		try {
+			UIHelper.buildProductBatchListbox(listbox, itemManager.allBatches(product));
+		} catch (NullPointerException e) {
+			Messages.warning_center(Labels.getLabel("no.records"), listbox);
+		}
+		
+	}
+	
 	private void list(Batch batch) {
 		Combobox combobox = (Combobox) SessionHelper.takeObject("searchBatch");
 		Label label = (Label) SessionHelper.takeObject("lbPrice");

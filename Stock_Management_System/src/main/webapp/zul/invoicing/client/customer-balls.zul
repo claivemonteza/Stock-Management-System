@@ -2,7 +2,6 @@
 	<style src="/css/clientInvoice.css" />
 	<vbox
 		apply="sms.invoicing.client.controller.CustomerBallsController">
-
 		<groupbox>
 			<caption label="${labels.client.record}" />
 			<hbox>

@@ -1,16 +1,16 @@
 <zk>
 
-	<window id="winNewProvider" border="none" mode="modal"
+	<window id="winCompanyDetails" border="none" mode="modal"
 		focus="true" position="center" closable="true" width="60%"
 		apply="sms.stock.provider.controller.ProviderAddController">
 
-		<caption label="${labels.add.provider}" />
+		<caption label="${labels.company.record}" />
 
 		<div>
 			<div sclass="detalhes">
 				<div>
 					<groupbox height="170px">
-						<caption label="${labels.provider.details}" />
+						<caption label="${labels.company.details}" />
 						<vbox>
 							<textbox id="txtName"
 								placeholder="${labels.name.record}" width="620px" />

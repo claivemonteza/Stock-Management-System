@@ -49,7 +49,7 @@ public class BatchEditController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3713209471379347892L;
 
 	@Wire
-	private Window panel;
+	private Window winNewBatch;
 	@Wire
 	private Textbox txtCode;
 	@Wire
@@ -95,14 +95,14 @@ public class BatchEditController extends GenericForwardComposer<Component> {
 			if (checkComponents()) {
 				details(batchSelected);
 				itemManager.update(batchSelected);
-				Messages.info_center(Labels.getLabel("messages.update"), panel);
+				Messages.info_center(Labels.getLabel("messages.update"), winNewBatch);
 				Inventory.addBatchAmount();
 				Inventory.updateAmountOfProduct();
 				cleanUp();
 				list();
 			}
 		} catch (NullPointerException ex) {
-			Messages.warning_center(Labels.getLabel("select.batch"), panel);
+			Messages.warning_center(Labels.getLabel("select.batch"), winNewBatch);
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLIntegrityConstraintViolationException e2) {
 			Messages.warning_right(Labels.getLabel("batch.code.already.exist"), txtCode);
@@ -111,7 +111,7 @@ public class BatchEditController extends GenericForwardComposer<Component> {
 
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		panel.detach();
+		winNewBatch.detach();
 	}
 
 

@@ -49,25 +49,47 @@ import sms.util.Extra;
 import sms.util.Messages;
 import sms.util.Verifications;
 
-//TODO Create documentation
-
+/**
+ * <code>UIHelper</code> will have methods that create templates will
+ * been use to create components in zk. 
+ * 
+ * @author Claive Monteza
+ * 
+ * @version 1.0
+ * @since 1.6
+ */
 public class UIHelper {
 
 	
-	
-	public static void generateReport(Report relatorio, String fileName) {
-		Media media = new AMedia(fileName, "pdf", "application/pdf", relatorio.getStream());
+	/**
+	 * Will generate any kind report
+	 * 
+	 * @param report
+	 * @param fileName
+	 * */
+	public static void generateReport(Report report, String fileName) {
+		Media media = new AMedia(fileName, "pdf", "application/pdf", report.getStream());
 		SessionHelper.setObject("reportToGenerate", media);
 		Executions.createComponents("./report/report.zul", null, null);
 	}
 	
-	
+	/**
+	 * will build a menu depending on user transactions
+	 * 
+	 * @param user
+	 * */
 	public static void buildMenu(User user) {
 		MainController main = SessionHelper.getMainController();
 		main.cleanUpMenu();
 		main.buildMenu(user);
 	}
 
+	/**
+	 * Will change the label of the button
+	 * 
+	 * @param obj
+	 * @param btn
+	 * */
 	public static void mudarLabels(Object obj, Button btn) {
 		if (obj != null) {
 			if (((Extra) obj).isActive()) {
@@ -83,11 +105,24 @@ public class UIHelper {
 	
 	/* COMBOBOX */
 
-	public static void buildCombobox(Combobox combobox, List<?> Objects) {
+	/**
+	 * Will build a combobox that have inputed a list os objects
+	 * 
+	 * @param combobox
+	 * @param objects
+	 * */
+	public static void buildCombobox(Combobox combobox, List<?> objects) {
 		clearCombobox(combobox);
-		combobox.setModel(new ListModelList<>(Objects));
+		combobox.setModel(new ListModelList<>(objects));
 	}
 
+	
+	/**
+	 * will build a combobox and put on a item each object
+	 * 
+	 * @param combobox
+	 * @param objects
+	 * */
 	public static void buildComboboxAlt(Combobox combobox, List<?> objects) {
 		clearCombobox(combobox);
 		for (Object object : objects) {
@@ -98,26 +133,39 @@ public class UIHelper {
 		}
 	}
 	
-	public static void BuildProductCombobox(Combobox combo, List<Product> products) {
-		combo.getItems().clear();
+	
+	/**
+	 * will build a combobox and put on each item of the combobox a product
+	 * 
+	 * @param combobox
+	 * @param products
+	 * */
+	public static void BuildProductCombobox(Combobox combobox, List<Product> products) {
+		combobox.getItems().clear();
 		for (Product product : products) {
 			Comboitem item = new Comboitem();
 			item.setStyle("font-size: 16px;font-family: Times New Roman");
 			item.setValue(product);
 			item.setLabel(product.getName());
 			// listitem.appendChild(new Listcell(product.getReferencia()));
-			combo.appendChild(item);
+			combobox.appendChild(item);
 		}
 	}
 	
-	public static void BuildProductCodeCombobox(Combobox combo, List<Product> products) {
-		combo.getItems().clear();
+	/**
+	 * will build a combobox and put on each item of the combobox a product
+	 * 
+	 * @param combobox
+	 * @param products
+	 * */
+	public static void BuildProductCodeCombobox(Combobox combobox, List<Product> products) {
+		combobox.getItems().clear();
 		for (Product product : products) {
 			Comboitem item = new Comboitem();
 			item.setValue(product);
 			item.setLabel(product.getCode());
 			// listitem.appendChild(new Listcell(product.getReferencia()));
-			combo.appendChild(item);
+			combobox.appendChild(item);
 		}
 	}
 	
@@ -424,18 +472,18 @@ public class UIHelper {
 	/**
 	 * verifies that the selected component is empty
 	 * 
+	 * @param component
 	 * @return
-	 * @param Component
-	 */
-	public static boolean selection(Component c) {
+	 * */
+	public static boolean selection(Component component) {
 		try {
-			if (checkSelectedComponent(c).equals("") || checkSelectedComponent(c).equals(null)) {
-				Messages.warning_right(Labels.getLabel("mandatory.field"), c);
+			if (checkSelectedComponent(component).equals("") || checkSelectedComponent(component).equals(null)) {
+				Messages.warning_right(Labels.getLabel("mandatory.field"), component);
 				return true;
 			}
 			return false;
 		} catch (NullPointerException | UiException ex) {
-			Messages.warning_right(Labels.getLabel("mandatory.field"), c);
+			Messages.warning_right(Labels.getLabel("mandatory.field"), component);
 			return true;
 		}
 	}
@@ -443,41 +491,41 @@ public class UIHelper {
 	/**
 	 * check if the filled field has empty space.
 	 * 
+	 * @param component
 	 * @return
-	 * @param Component
-	 */
+	 * */
 
-	public static boolean field(Component c) {
+	public static boolean field(Component component) {
 		try {
-			if (checkFilledFields(c).equals("") || checkFilledFields(c).equals(null)) {
-				Messages.warning_right(Labels.getLabel("mandatory.field"), c);
+			if (checkFilledFields(component).equals("") || checkFilledFields(component).equals(null)) {
+				Messages.warning_right(Labels.getLabel("mandatory.field"), component);
 				return true;
 			}
 			return false;
 		} catch (NullPointerException ex) {
-			Messages.warning_right(Labels.getLabel("mandatory.field"), c);
+			Messages.warning_right(Labels.getLabel("mandatory.field"), component);
 			return true;
 		}
 	}
 
 	/* METODOS AUXILIZAR */
 	/**
-	 * check the selected component
+	 * Will check if the selected component is empty or not
 	 * 
+	 * @param component
 	 * @return
-	 * @param Component
-	 */
-	private static Object checkSelectedComponent(Component c) {
+	 * */
+	private static Object checkSelectedComponent(Component component) {
 		try {
-			if (c instanceof Radiogroup) {
-				Object obj = ((Radiogroup) c).getSelectedItem().getLabel();
+			if (component instanceof Radiogroup) {
+				Object obj = ((Radiogroup) component).getSelectedItem().getLabel();
 				if (Verifications.characters(String.valueOf(obj))) {
 					return obj;
 				}
-			} else if (c instanceof Listbox) {
-				return ((Listbox) c).getSelectedItem().getValue();
-			} else if (c instanceof Combobox) {
-				return ((Combobox) c).getSelectedItem().getValue();
+			} else if (component instanceof Listbox) {
+				return ((Listbox) component).getSelectedItem().getValue();
+			} else if (component instanceof Combobox) {
+				return ((Combobox) component).getSelectedItem().getValue();
 			}
 			return null;
 
@@ -487,60 +535,60 @@ public class UIHelper {
 	}
 
 	/**
-	 * Check filled fields
+	 * Will check if the component is empty or not
 	 * 
+	 * @param component
 	 * @return
-	 * @param Component
 	 */
-	public static Object checkFilledFields(Component c) throws NullPointerException {
-		if (c instanceof Textbox) {
-			Object obj = ((Textbox) c).getValue();
-			((Textbox) c).setValue(((String) obj).replaceAll("^\\s+", ""));
+	public static Object checkFilledFields(Component component) throws NullPointerException {
+		if (component instanceof Textbox) {
+			Object obj = ((Textbox) component).getValue();
+			((Textbox) component).setValue(((String) obj).replaceAll("^\\s+", ""));
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Spinner) {
-			Object obj = ((Spinner) c).getValue();
+		} else if (component instanceof Spinner) {
+			Object obj = ((Spinner) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Doublespinner) {
-			Object obj = ((Doublespinner) c).getValue();
+		} else if (component instanceof Doublespinner) {
+			Object obj = ((Doublespinner) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Datebox) {
-			Object obj = ((Datebox) c).getValue();
+		} else if (component instanceof Datebox) {
+			Object obj = ((Datebox) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Timebox) {
-			Object obj = ((Timebox) c).getValue();
+		} else if (component instanceof Timebox) {
+			Object obj = ((Timebox) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Decimalbox) {
-			Object obj = ((Decimalbox) c).getValue();
+		} else if (component instanceof Decimalbox) {
+			Object obj = ((Decimalbox) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Intbox) {
-			Object obj = ((Intbox) c).getValue();
+		} else if (component instanceof Intbox) {
+			Object obj = ((Intbox) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Longbox) {
-			Object obj = ((Longbox) c).getValue();
+		} else if (component instanceof Longbox) {
+			Object obj = ((Longbox) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Doublebox) {
-			Object obj = ((Doublebox) c).getValue();
+		} else if (component instanceof Doublebox) {
+			Object obj = ((Doublebox) component).getValue();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}
-		} else if (c instanceof Combobox) {
-			Object obj = ((Combobox) c).getText();
+		} else if (component instanceof Combobox) {
+			Object obj = ((Combobox) component).getText();
 			if (Verifications.characters(String.valueOf(obj))) {
 				return obj;
 			}

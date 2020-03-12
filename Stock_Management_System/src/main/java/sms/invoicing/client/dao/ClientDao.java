@@ -22,8 +22,7 @@ import sms.invoicing.client.model.Client;
  * 
  * @version 1.0
  * @since 1.6
- */
-
+ **/
 @Repository
 public class ClientDao extends GenericDAO<Client> {
 
@@ -35,9 +34,9 @@ public class ClientDao extends GenericDAO<Client> {
 	/**
 	 * Will search at the database if exist client with same name.
 	 * 
-	 * @param name
-	 * @return
-	 */
+	 * @param name variable of the client
+	 * @return Client object of client
+	 **/
 	public Client findByName(String name) {
 		Session session = getSession();
 		Criteria criteria = session.createCriteria(Client.class);
@@ -49,9 +48,9 @@ public class ClientDao extends GenericDAO<Client> {
 	/**
 	 * Will search at the database if exist client with same nuit.
 	 * 
-	 * @param nuit
-	 * @return
-	 */
+	 * @param nuit variable of the client
+	 * @return Client object of client
+	 **/
 	public Client findByNuit(String nuit) {
 		Session session = getSession();
 		Criteria criteria = session.createCriteria(Client.class);
@@ -63,9 +62,9 @@ public class ClientDao extends GenericDAO<Client> {
 	/**
 	 * Will search for all client are active.
 	 * 
-	 * @param active
-	 * @return
-	 * */
+	 * @param active variable that will active or inactive
+	 * @return list of client
+	 **/
 	@SuppressWarnings("unchecked")
 	public List<Client> allClients(boolean active) {
 		String hql = "from Client as client where client.active=:active";
@@ -77,9 +76,9 @@ public class ClientDao extends GenericDAO<Client> {
 	/**
 	 * will search for all clients with have on name str.
 	 * 
-	 *@param str
-	 *@return
-	 * */
+	 * @param str variable that will be compare with name and nuit
+	 * @return list of client
+	 **/
 	@SuppressWarnings("unchecked")
 	public List<Client> find(String str) {
 		Criteria criteria = getSession().createCriteria(Client.class);
@@ -93,14 +92,13 @@ public class ClientDao extends GenericDAO<Client> {
 		return clients;
 	}
 	
-	
 	/**
 	 * will search for all clients with have on name str and are active.
 	 * 
-	 *@param str
-	 *@param active
-	 *@return
-	 * */
+	 * @param str variable that will be compare with name and nuit
+	 * @param active variable that will active or inactive
+	 * @return list of clients
+	 **/
 	@SuppressWarnings("unchecked")
 	public List<Client> find(String str,boolean active) {
 		Criteria criteria = getSession().createCriteria(Client.class);
@@ -116,7 +114,8 @@ public class ClientDao extends GenericDAO<Client> {
 		return clients;
 	}
 	
-	/**
+	/*
+	 * 
 	 * This method will search for all unpaid invoices that the client have.
 	 * 
 	 * @param client

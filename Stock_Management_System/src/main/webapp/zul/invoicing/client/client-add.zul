@@ -1,7 +1,7 @@
 <zk>
 	<style src="/css/style.css" />
 
-	<window id="clientAdd" title="" border="none" mode="modal"
+	<window id="winNewClient" border="none" mode="modal"
 		focus="true" position="center" closable="true" width="60%"
 		apply="sms.invoicing.client.controller.ClientAddController">
 

@@ -39,7 +39,7 @@ public class ClientEditController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3427591684573675888L;
 
 	@Wire
-	private Window clientModify;
+	private Window winEditClient;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -78,15 +78,15 @@ public class ClientEditController extends GenericForwardComposer<Component> {
 			if (checkComponents()) {
 				detalhesCliente(clientSelected);
 					invoicingManager.update(clientSelected);
-					Messages.info_center(Labels.getLabel("messages.update"), clientModify);
+					Messages.info_center(Labels.getLabel("messages.update"), winEditClient);
 					UIHelper.refreshListBox("listClients", "searchClient", invoicingManager.allClients(true), invoicingManager.allClients());
 					cleanUp();
 			}
 		} catch (DataIntegrityViolationException | ConstraintViolationException
 				| SQLIntegrityConstraintViolationException e1) {
-			Messages.warning_center(Labels.getLabel("client.already.exist"), clientModify);
+			Messages.warning_center(Labels.getLabel("client.already.exist"), winEditClient);
 		} catch (NullPointerException ex) {
-			Messages.warning_center(Labels.getLabel("select.client"), clientModify);
+			Messages.warning_center(Labels.getLabel("select.client"), winEditClient);
 		}
 	}
 
@@ -107,7 +107,7 @@ public class ClientEditController extends GenericForwardComposer<Component> {
 		txtFax.setValue(null);
 		txtEmail.setValue(null);
 		clientSelected = null;
-		clientModify.detach();
+		winEditClient.detach();
 	}
 
 	private void detalhesCliente(Client cliente) {

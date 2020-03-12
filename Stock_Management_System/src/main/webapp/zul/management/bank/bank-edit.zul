@@ -1,8 +1,8 @@
 <zk>
 
-	<window id="panel" title="" border="none" mode="modal" focus="true"
+	<window id="winEditBank" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="50%"
-		apply="sms.management.bank.controller.BankEditController">
+		apply="">
 
 		<caption label="${labels.modify.bank}" />
 		<vbox pack="center">

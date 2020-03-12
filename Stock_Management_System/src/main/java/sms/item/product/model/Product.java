@@ -68,7 +68,7 @@ public class Product extends Extra implements Comparable<Product>{
 	 * This method will compare this class with another 
 	 *  with the same name.
 	 * 
-	 * @param category
+	 * @param product
 	 */
 	@Override
 	public int compareTo(Product product) {

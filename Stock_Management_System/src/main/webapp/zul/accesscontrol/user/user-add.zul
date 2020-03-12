@@ -1,7 +1,7 @@
 <zk>
 	<style src="/css/style.css" />
 
-	<window id="panel" title="" border="none" mode="modal" focus="true"
+	<window id="winNewUser" border="none" mode="modal" focus="true"
 		position="center" closable="true" width="65%"
 		apply="sms.access.user.controller.UserAddController">
 

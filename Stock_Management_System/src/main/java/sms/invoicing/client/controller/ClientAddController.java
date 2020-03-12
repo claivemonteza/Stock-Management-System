@@ -29,7 +29,7 @@ public class ClientAddController extends GenericForwardComposer<Component> {
 	private static final long serialVersionUID = -3427591684573675888L;
 
 	@Wire
-	private Window clientAdd;
+	private Window winNewClient;
 	@Wire
 	private Textbox txtName;
 	@Wire
@@ -67,20 +67,20 @@ public class ClientAddController extends GenericForwardComposer<Component> {
 				details(client);
 				if (checkClient(client)) {
 					invoicingManager.save(client);
-					Messages.info_center(Labels.getLabel("messages.add"), clientAdd);
+					Messages.info_center(Labels.getLabel("messages.add"), winNewClient);
 					cleanUp();
 					UIHelper.refreshListBox("listClients", "searchClient", invoicingManager.allClients(true), invoicingManager.allClients());
 				}
 			}
 		} catch (ConstraintViolationException | DataIntegrityViolationException
 				| SQLIntegrityConstraintViolationException ex) {
-			Messages.warning_center(Labels.getLabel("client.already.exist"), clientAdd);
+			Messages.warning_center(Labels.getLabel("client.already.exist"), winNewClient);
 		}
 	}
 
 	public void onClick$btnCancel(Event e) {
 		cleanUp();
-		clientAdd.detach();
+		winNewClient.detach();
 	}
 
 	
