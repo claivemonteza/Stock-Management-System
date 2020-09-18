@@ -1,0 +1,70 @@
+<zk>
+	<style src="/css/style.css" />
+
+	<window id="winEditProduct" border="none" mode="modal"
+		focus="true" position="center" closable="true" width="75%"
+		apply="sms.item.product.controller.ProductEditController">
+
+		<caption label="${labels.modify.product}" />
+
+		<div>
+			<div sclass="detalhes">
+				<vbox>
+					<textbox id="txtCode" readonly="true"
+						placeholder="${labels.code.record}" />
+					<textbox id="txtName"
+						placeholder="${labels.name.record}" width="600px" />
+					<textbox id="txtBrand"
+						placeholder="${labels.brand.record}" width="300px" />
+				</vbox>
+				<div sclass="clean" />
+				<div sclass="left_session">
+					<groupbox height="170px">
+						<caption label="${labels.category.record}" />
+						<combobox id="cbxCategory" readonly="true"
+							autodrop="false" placeholder="${labels.category.record}">
+						</combobox>
+					</groupbox>
+				</div>
+				<div sclass="center_session">
+					<groupbox height="170px">
+						<caption label="${labels.amount.record}" />
+						<vbox>
+							<hbox>
+								<intbox id="iAmount" readonly="true"
+									sclass="labelText" placeholder="${labels.amount.record}"
+									value="0" />
+								<space />
+								<combobox id="cbUnity" width="104px"
+									readonly="true" autocomplete="true" autodrop="true">
+								</combobox>
+							</hbox>
+							<intbox id="iMax" sclass="labelText"
+								placeholder="${labels.amount.max}" />
+							<intbox id="iMin" sclass="labelText"
+								placeholder="${labels.amount.min}" />
+						</vbox>
+					</groupbox>
+				</div>
+				<div sclass="right_session">
+					<groupbox id="gbVat" open="true" height="170px">
+						<caption>
+							<checkbox id="isento" sclass="labelText"
+								checked="false" label="${labels.vat.free}" />
+						</caption>
+						<hbox>
+							<doublebox id="dbVat"
+								placeholder="${labels.vat.record} 0.17" inplace="false" />
+						</hbox>
+					</groupbox>
+				</div>
+				<div sclass="clean"></div>
+				<hbox>
+					<button id="btnSave" label="${labels.save.record}" />
+					<button id="btnCancel"
+						label="${labels.cancel.record}" />
+				</hbox>
+			</div>
+		</div>
+	</window>
+</zk>

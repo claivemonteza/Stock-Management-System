@@ -1,0 +1,79 @@
+<zk>
+
+	<window id="winProductSearch" mode="modal" border="none" width="700px"
+		height="540px" closable="true"
+		apply="sms.item.product.controller.ProductSearchController">
+
+		<caption sclass="title" label="${labels.search.record}"
+			style="font-size: 24px;
+	font-family: Times New Roman; font-weight: bold;" />
+
+		<space width="25px" />
+
+		<vbox>
+			<div align="right">
+				<combobox id="cbx_pesquisar" width="300px"
+					autocomplete="true" autodrop="false" buttonVisible="false"
+					placeholder="${labels.search.record}"
+					style="font-size: 14px;
+	 font-family: Times New Roman">
+					<template name="model">
+						<comboitem label="${each.designacao}"
+							style="font-size: 14px;
+	 font-family: Times New Roman">
+						</comboitem>
+					</template>
+				</combobox>
+			</div>
+
+			<hbox>
+				<groupbox>
+					<caption label="${labels.product.list}"
+						style="font-size: 16px;
+	font-weight:bold; font-family: Times New Roman" />
+					<listbox id="listbox" sclass="listbox" vflex="1"
+						checkmark="true">
+						<listhead>
+							<listheader label="${labels.code.record}"
+								sort="auto" width="100px"
+								style="font-size: 14px;
+	 font-family: Times New Roman" />
+							<listheader label="${labels.name.record}"
+								sort="auto" />
+							<listheader label="${labels.amount.record}"
+								sort="auto" width="80px"
+								style="font-size: 14px;
+	 font-family: Times New Roman" />
+						</listhead>
+						<template name="model">
+							<listitem>
+								<listcell label="${each.referencia}"
+									style="font-size: 16px;
+	 font-family: Times New Roman">
+								</listcell>
+								<listcell label="${each.designacao}"
+									style="font-size: 16px;
+	 font-family: Times New Roman">
+								</listcell>
+								<listcell label="${each.quantidade}"
+									style="font-size: 16px;
+	 font-family: Times New Roman">
+								</listcell>
+							</listitem>
+						</template>
+					</listbox>
+				</groupbox>
+			</hbox>
+
+
+			<hbox>
+				<button id="btnOk" label="${labels.ok.record}"
+					style="font-size: 14px;
+	 font-family: Times New Roman" />
+				<button id="btnCancel" label="${labels.cancel.record}"
+					style="font-size: 14px;
+	 font-family: Times New Roman" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

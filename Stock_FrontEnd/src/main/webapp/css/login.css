@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+/* Import other css */
+@import url(style.css);
+
+.z-tabbox, .z-tabpanels {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	width: 100%;
+}
+
+.z-toolbar {
+	/*border-color: transparent;
+	background: linear-gradient(to bottom, white 0%, white 100%);*/
+	width: 150px;
+}
+
+.z-toolbarbutton-content {
+	border: 2px solid #004080;
+}
+
+.z-toolbar-content>* {
+	margin-left: 0px
+}
+
+.name {
+	font-weight: bold;
+	font-size: 100px;
+	font-family: Algerian;
+	color: #004080;
+}
+
+.logo {
+	font-weight: bold;
+	font-size: 250px;
+	font-family: Algerian;
+	color: #004080;
+}
+
+.texto {
+	font-weight: bold;
+	font-size: 22px;
+	font-family: Times New Roman;
+	border-radius: 5px;
+}
+
+.login {
+	font-size: 22px;
+	font-family: Times New Roman;
+	width: 100px;
+	height: 40px;
+	'
+}

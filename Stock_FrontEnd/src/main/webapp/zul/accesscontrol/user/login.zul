@@ -1,0 +1,35 @@
+<?page title="${labels.application.name}" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<style src="/css/login.css" />
+	<window id="winlogin" border="none" mode="highlighted"
+		height="38%" width="24%" position="center"
+		apply="sms.access.user.controller.LoginController">
+
+
+		<div>
+			<hbox>
+				<toolbar style="margin-left:420px">
+					<toolbarbutton id="tbEnglish" label="EN" />
+					<toolbarbutton id="tbPortugues" label="PT" />
+				</toolbar>
+			</hbox>
+			<vbox align="center">
+				<div  height="270px" width="540px"
+					align="center">
+					<image src="/imagens/login.png" width="540px" height="270px"/>
+				</div>
+				<div sclass="clean" />
+				<vbox align="center">
+					<textbox id="txtUsername" focus="true"
+						sclass="texto" placeholder="${labels.user.name}" />
+					<textbox id="txtPassword" type="password"
+						placeholder="${labels.password.record}" sclass="texto" />
+					<div align="right">
+						<button id="btnLogin" sclass="login"
+							label="${labels.login.record}" />
+					</div>
+				</vbox>
+			</vbox>
+		</div>
+	</window>
+</zk>

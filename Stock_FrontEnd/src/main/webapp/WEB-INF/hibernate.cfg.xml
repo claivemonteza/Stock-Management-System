@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<!-- Drop and re-create the database schema on startup -->
+		<!-- create, update, validate, create-drop -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- Mapping -->
+
+		<mapping class="sms.Item" />
+		<mapping class="sms.Entidade" />
+
+		<mapping class="sms.access.profile.model.Profile" />
+		<mapping class="sms.access.transaction.model.Transaction" />
+		<mapping class="sms.access.user.model.User" />
+		<mapping class="sms.access.user.model.UserRoler" />
+		
+		<mapping class="sms.company.model.Company" />
+		<mapping class="sms.company.model.Stock" />
+
+		<mapping class="sms.invoicing.client.model.Client" />
+
+		<mapping class="sms.item.batch.model.Batch" />
+		<mapping class="sms.item.product.model.Product" />
+
+		<mapping class="sms.stock.item.model.ItemRequest" />
+		<mapping class="sms.stock.provider.model.Provider" />
+		<mapping class="sms.stock.request.model.Request" />
+
+		<mapping class="sms.invoicing.quotation.model.Quotation" />
+		<mapping class="sms.invoicing.invoice.model.Invoice" />
+		<mapping class="sms.invoicing.item.model.SaleItem" />
+		<mapping class="sms.invoicing.sale.model.Sale" />
+		<mapping class="sms.invoicing.cash.model.CashSale" />
+
+		<mapping class="sms.invoicing.receipt.model.Receipt" />
+
+		<mapping class="sms.invoicing.payment.model.ItemPaid" />
+		<mapping class="sms.invoicing.payment.model.ItemPaidBill" />
+		<mapping class="sms.invoicing.payment.model.ItemPaidPos" />
+		<mapping class="sms.invoicing.payment.model.Paid" />
+		<mapping class="sms.invoicing.payment.model.PaidPos" />
+		<mapping class="sms.invoicing.payment.model.PaidInvoice" />
+		<mapping class="sms.management.bank.model.ViaBank" />
+
+	</session-factory>
+</hibernate-configuration>

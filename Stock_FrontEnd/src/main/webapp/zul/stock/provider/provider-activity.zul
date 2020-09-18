@@ -1,0 +1,61 @@
+<zk>
+	<style src="/css/fornecedor-requisicao.css" />
+
+	<space />
+	<div apply="sms.stock.provider.controller.ProviderActivityController">
+		<div sclass="grid">
+			<div sclass="left">
+				<hbox>
+					<textbox id="txtName"
+						placeholder="${labels.name.record}" width="400px"
+						readonly="true"/>
+					<textbox id="txtNuit"
+						placeholder="${labels.nuit.record}" width="200px" readonly="true"/>
+				</hbox>
+			</div>
+			<div sclass="center">
+				<space></space>
+			</div>
+			<div sclass="right">
+				<combobox id="cbx_search" sclass="search"
+					autocomplete="true" autodrop="false" buttonVisible="false"
+					placeholder="${labels.search.record}">
+					<template name="model">
+						<comboitem label="${each.code}">
+						</comboitem>
+					</template>
+				</combobox>
+			</div>
+		</div>
+
+		<vbox>
+			<groupbox>
+				<caption label="${labels.requestion.list}"/>
+				<listbox id="listbox" sclass="listbox" vflex="1">
+					<listhead>
+						<listheader label="${labels.request.record}"
+							sort="auto"/>
+						<listheader label="${labels.date.record}"
+							width="200px" sort="auto" />
+						<listheader label="${labels.value.record}"
+							width="200px" sort="auto"/>
+					</listhead>
+					<template name="model">
+						<listitem>
+							<listcell label="${each.code}">
+							</listcell>
+							<listcell label="${each.date}">
+							</listcell>
+							<listcell label="${each.total}">
+							</listcell>
+						</listitem>
+					</template>
+				</listbox>
+			</groupbox>
+			<div align="right">
+				<button id="btnPrint" sclass="button" label="${labels.print.record}"/>
+				<button id="btnCancel" sclass="button" label="${labels.cancel.record}" />
+			</div>
+		</vbox>
+	</div>
+</zk>

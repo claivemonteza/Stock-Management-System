@@ -1,0 +1,72 @@
+<zk>
+
+	<window id="winEditProvider" border="none" mode="modal"
+		focus="true" position="center" closable="true" width="75%"
+		apply="sms.stock.provider.controller.ProviderEditController">
+
+		<caption label="${labels.modify.provider}" />
+
+		<div>
+			<div sclass="detalhes">
+				<div>
+					<groupbox height="170px">
+						<caption label="${labels.provider.details}" />
+						<vbox>
+							<textbox id="txtName" readonly="true"
+								placeholder="${labels.name.record}" width="620px" />
+							<textbox id="txtNuit" readonly="true"
+								placeholder="${labels.nuit.record}" width="200px" />
+						</vbox>
+					</groupbox>
+				</div>
+				<div sclass="clean" />
+
+				<div>
+					<groupbox>
+						<caption label="${labels.address.record}" />
+						<vbox>
+							<textbox id="txtCity"
+								placeholder="${labels.city.record}" width="200px" />
+							<hbox>
+								<textbox id="txtProvince"
+									placeholder="${labels.province.record}" width="200px" />
+								<textbox id="txtCountry"
+									placeholder="${labels.country.record}" />
+							</hbox>
+							<textbox id="txtAddress"
+								placeholder="${labels.address.record}" width="500px" />
+						</vbox>
+					</groupbox>
+				</div>
+				<div sclass="clean" />
+				<div>
+					<groupbox>
+						<caption label="${labels.contacts.record}" />
+						<vbox>
+							<textbox id="txtPhone"
+								placeholder="${labels.phone.record}" width="300px" />
+							<hbox>
+								<textbox id="txtMobile"
+									placeholder="${labels.mobile.record}" width="300px" />
+								<textbox id="txtFax"
+									placeholder="${labels.fax.record}" width="300px" />
+							</hbox>
+							<textbox id="txtEmail"
+								placeholder="${labels.email.record}" width="500px" />
+						</vbox>
+					</groupbox>
+				</div>
+
+				<div sclass="clean" />
+				<div>
+					<hbox>
+						<button id="btnSave" sclass="button"
+							label="${labels.save.record}" />
+						<button id="btnCancel" sclass="button"
+							label="${labels.cancel.record}" />
+					</hbox>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

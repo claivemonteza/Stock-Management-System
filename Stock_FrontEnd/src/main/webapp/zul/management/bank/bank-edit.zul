@@ -1,0 +1,21 @@
+<zk>
+
+	<window id="winEditBank" border="none" mode="modal" focus="true"
+		position="center" closable="true" width="50%"
+		apply="">
+
+		<caption label="${labels.modify.bank}" />
+		<vbox pack="center">
+			<div height="5px"></div>
+
+			<textbox id="txtName" width="600px" readonly="true"
+				placeholder="${labels.name.record}" />
+			<textbox id="txtAcronyms" width="200px"
+				placeholder="${labels.acronyms.record}" />
+			<hbox>
+				<button id="btnSave" label="${labels.save.record}" />
+				<button id="btnCancel" label="${labels.cancel.record}" />
+			</hbox>
+		</vbox>
+	</window>
+</zk>

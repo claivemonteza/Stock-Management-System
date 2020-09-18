@@ -1,0 +1,193 @@
+<zk>
+	<style src="/css/clientInvoice.css" />
+	<vbox
+		apply="sms.invoicing.client.controller.CustomerBillingController">
+
+
+		<groupbox>
+			<caption label="${labels.client.record}" />
+			<hbox>
+				<textbox id="txtName"
+					placeholder="${labels.name.record}" sclass="txtName"
+					readonly="true" />
+				<textbox id="txtNuit"
+					placeholder="${labels.nuit.record}" sclass="txtNuit"
+					readonly="true" />
+			</hbox>
+		</groupbox>
+
+		<tabbox>
+			<tabs>
+				<tab id="tabInvoices" label="${labels.invoice.list}" />
+				<tab id="tabBank" label="${labels.payment.record}" />
+			</tabs>
+			<tabpanels>
+				<tabpanel>
+					<listbox id="listbox" sclass="listbox1"
+						multiple="true" checkmark="true">
+						<listhead>
+							<listheader label="${labels.invoice.record}"
+								width="40%" />
+							<listheader label="${labels.date.record}"
+								sort="auto" />
+							<listheader label="${labels.duedate.record}"
+								sort="auto" />
+							<listheader label="${labels.value.record}"
+								sort="auto" />
+							<listheader label="${labels.unpaid.record}"
+								sort="auto" />
+							<listheader label="${labels.paid.out}"
+								sort="auto" />
+						</listhead>
+					</listbox>
+				</tabpanel>
+
+				<tabpanel>
+					<vbox>
+						<div>
+							<listbox id="listViaBank" sclass="listbox2"
+								vflex="1" checkmark="false">
+								<listhead>
+									<listheader label="Number"
+										align="center" width="15%">
+									</listheader>
+									<listheader label="Bank" sort="auto"
+										align="center">
+									</listheader>
+									<listheader label="Type" sort="auto"
+										align="center">
+									</listheader>
+									<listheader label="Date" sort="auto"
+										align="center">
+									</listheader>
+									<listheader label="Amount"
+										sort="auto" align="center">
+									</listheader>
+									<listheader label="" align="center"
+										width="8%">
+									</listheader>
+								</listhead>
+								<template name="model">
+									<listitem>
+										<listcell
+											label="${each.number}">
+										</listcell>
+										<listcell
+											label="${each.bank}">
+										</listcell>
+										<listcell
+											label="${each.type}">
+										</listcell>
+										<listcell
+											label="${each.term}">
+										</listcell>
+										<listcell
+											label="${each.amount}">
+										</listcell>
+										<listcell></listcell>
+									</listitem>
+								</template>
+							</listbox>
+							<listbox sclass="listbox3">
+								<listhead>
+									<listheader align="center"
+										width="15%">
+									</listheader>
+									<listheader align="left"
+										sort="auto">
+									</listheader>
+									<listheader align="center"
+										sort="auto">
+									</listheader>
+									<listheader align="center"
+										sort="auto">
+									</listheader>
+									<listheader align="center"
+										sort="auto">
+									</listheader>
+									<listheader width="8%"
+										align="center">
+									</listheader>
+								</listhead>
+								<listitem>
+									<listcell>
+										<textbox id="txtNumber"
+											placeholder="${labels.number.record}" />
+									</listcell>
+									<listcell>
+										<combobox id="cbx_bank"
+											width="100%" sclass="combobox" height="100%" autodrop="true"
+											autocomplete="true" buttonVisible="true"
+											placeholder="${labels.bank.record}">
+										</combobox>
+									</listcell>
+									<listcell>
+										<combobox id="cbx_type"
+											width="100%" sclass="combobox" height="100%" autodrop="true"
+											autocomplete="true" buttonVisible="true"
+											placeholder="${labels.type.record}">
+										</combobox>
+									</listcell>
+									<listcell>
+										<datebox id="issued"
+											displayedTimeZones="mmm dd,yy" height="100%" width="100%"
+											placeholder="Date" />
+									</listcell>
+									<listcell>
+										<doublebox id="amount"
+											height="100%" width="100%" placeholder="0.00" />
+									</listcell>
+									<listcell>
+										<hlayout width="100%"
+											height="100%">
+											<button id="btnAdd"
+												width="100px" height="45px" image="/imagens/add.png"
+												forward="onClick">
+											</button>
+										</hlayout>
+									</listcell>
+								</listitem>
+							</listbox>
+						</div>
+					</vbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+
+		<listbox id="lbx_total" sclass="list">
+			<listhead>
+				<listheader align="center"></listheader>
+				<listheader align="center"></listheader>
+				<listheader align="center"></listheader>
+				<listheader align="center"></listheader>
+				<listheader align="center"></listheader>
+				<listheader align="center"></listheader>
+			</listhead>
+			<listitem>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell label="" sclass="labelText"></listcell>
+				<listcell label="0.00" sclass="labelText"></listcell>
+			</listitem>
+			<listitem>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell></listcell>
+				<listcell>
+					<label value="Total" sclass="labelText"></label>
+				</listcell>
+				<listcell label="0.00" sclass="labelText"></listcell>
+			</listitem>
+		</listbox>
+
+		<div align="right">
+			<button id="btnPay" label="${labels.pay.record}"
+				sclass="button" />
+			<button id="btnCancel" label="${labels.cancel.record}"
+				sclass="button" />
+		</div>
+	</vbox>
+</zk>
