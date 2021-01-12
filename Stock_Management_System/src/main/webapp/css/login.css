@@ -1,54 +1,72 @@
 @charset "ISO-8859-1";
 
 /* Import other css */
-@import url(style.css);
-
-.z-tabbox, .z-tabpanels {
-	margin: 0px;
-	padding: 0px;
-	height: 100%;
-	width: 100%;
-}
-
-.z-toolbar {
-	/*border-color: transparent;
-	background: linear-gradient(to bottom, white 0%, white 100%);*/
-	width: 150px;
-}
-
-.z-toolbarbutton-content {
-	border: 2px solid #004080;
-}
-
-.z-toolbar-content>* {
-	margin-left: 0px
-}
-
-.name {
-	font-weight: bold;
-	font-size: 100px;
-	font-family: Algerian;
-	color: #004080;
-}
-
 .logo {
-	font-weight: bold;
-	font-size: 250px;
+	width: 5.6rem;
+}
+
+.logo .z-label {
+	font-size: 5rem;
 	font-family: Algerian;
 	color: #004080;
+	padding-left: 0.5rem;
 }
 
-.texto {
-	font-weight: bold;
-	font-size: 22px;
-	font-family: Times New Roman;
-	border-radius: 5px;
+.clean {
+	height: 10px;
+	clear: both;
 }
 
-.login {
-	font-size: 22px;
-	font-family: Times New Roman;
-	width: 100px;
-	height: 40px;
-	'
+.form {
+	padding-left: 4.5rem;
+}
+
+.form .z-textbox, .z-button {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.form .z-textbox {
+	color: rgba(0, 0, 0, 0.9);
+	height: 24px;
+	border: 1px solid #d9d9d9;
+	border-top-color: rgb(217, 217, 217);
+	border-right-color: rgb(217, 217, 217);
+	border-bottom-color: rgb(217, 217, 217);
+	border-left-color: rgb(217, 217, 217);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	-ms-border-radius: 4px;
+	border-radius: 4px;
+	padding: 0 8px;
+	line-height: 16px;
+	background: #fff;
+}
+
+.form .z-button {
+	color: #fff;
+	min-height: 21px;
+	border: 2px solid transparent;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+	-ms-border-radius: 4px;
+	border-radius: 4px;
+	padding: 0px 16px;
+	line-height: normal;
+	background-color: #0093f9;
+	-webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+	-moz-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+	-o-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+	-ms-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+	cursor: pointer;
+	white-space: nowrap;
 }

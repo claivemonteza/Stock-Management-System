@@ -38,17 +38,17 @@
 								<listheader label="" sort="auto"
 									width="40px" />
 								<listheader
-									label="${labels.name.record}" sort="auto" width="400px"/>
+									label="${labels.name.record}" sort="auto" width="300px"/>
 								<listheader
-									label="${labels.nuit.record}" sort="auto" width="200px"/>
+									label="${labels.nuit.record}" sort="auto" width="75px"/>
 								<listheader
 									label="${labels.address.record}" sort="auto"/>
 								<listheader
 									label="${labels.email.record}" sort="auto"/>
 								<listheader
-									label="${labels.phone.record}" sort="auto" width="200px"/>
+									label="${labels.phone.record}" sort="auto" width="75px"/>
 								<listheader
-									label="${labels.mobile.record}" sort="auto" width="250px"/>
+									label="${labels.mobile.record}" sort="auto" width="120px"/>
 							</listhead>
 							<template name="model">
 								<listitem>

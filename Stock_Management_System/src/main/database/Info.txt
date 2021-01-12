@@ -5,3 +5,10 @@ Goals: jetty:run
 
 Run Test
 Goals: -DforkMode=never test
+
+
+User: Clive
+pass: monteza1 (1QKVNKqsbCgE6wywhoGwY+tdTc6DpK09tFlA5uC1rVtc1LdreDYx3yDfYWqeIIrm)
+
+User:Marco
+pass:0000

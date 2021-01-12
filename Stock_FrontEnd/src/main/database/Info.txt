@@ -1,7 +1,0 @@
-Maven
-
-Run application
-Goals: jetty:run
-
-Run Test
-Goals: -DforkMode=never test

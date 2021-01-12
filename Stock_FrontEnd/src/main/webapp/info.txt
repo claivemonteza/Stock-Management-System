@@ -1,5 +1,0 @@
-run application
-jetty:run
-
-run Debug
--DforkMode=never test

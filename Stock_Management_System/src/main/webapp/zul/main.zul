@@ -2,17 +2,12 @@
 <zk>
 	<style src="/css/style.css" />
 	<borderlayout width="100%" apply="sms.controller.MainController">
-		<north height="12%">
+		<north height="10%">
 			<div sclass="header">
-				<div>
-					<hbox>
-						<cell align="left" width="50%">
-							<image src="/imagens/logotipo.png" />
-
-						</cell>
-					</hbox>
+				<div align="left">
+						<label  sclass="logo">SMS</label>
 				</div>
-				<div sclass="header_nav">
+				<div>
 					<menubar id="bar" autodrop="True">
 						<menu id="sistema"
 							label="${labels.system.record}">
@@ -49,11 +44,10 @@
 		<center autoscroll="true">
 			<tabbox id="contentTabbox" height="100%">
 				<tabs></tabs>
-				<tabpanels>
-				</tabpanels>
+				<tabpanels></tabpanels>
 			</tabbox>
 		</center>
-		<south height="3.5%">
+		<south height="6%">
 			<div sclass="footer">
 				<toolbar>
 					<label sclass="footer-label"

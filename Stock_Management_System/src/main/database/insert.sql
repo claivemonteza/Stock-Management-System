@@ -130,7 +130,7 @@ INSERT INTO `profile_transaction` VALUES
 
 
 INSERT INTO `user` VALUES 
-(1,'','2017-05-27','ENGLISH','Claive Monteza','szfkcBiMC/yewrdg0WcVyatIbStyYQT8Db5x9+cAqRbY/zjgs/V5kRQicDawPyXu','Clive',1),
+(1,'','2017-05-27','ENGLISH','Claive Monteza','1QKVNKqsbCgE6wywhoGwY+tdTc6DpK09tFlA5uC1rVtc1LdreDYx3yDfYWqeIIrm','Clive',1),
 (2,'','2017-05-27','PORTUGUESE','Marco Carvalho','el6+TYSP7YFSQ47L0FysZF9WCudnd6dKJeMYLlCQK/FyeRZsId/ZVibQbq5GDIGk','Marco',1);
 
 --

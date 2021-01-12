@@ -10,13 +10,11 @@ import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Textbox;
-import org.zkoss.zul.Toolbarbutton;
 import org.zkoss.zul.Window;
 
 import sms.ManagerFactory;
 import sms.access.AccessManager;
 import sms.access.user.model.User;
-import sms.language.Language;
 import sms.report.SessionHelper;
 import sms.util.Messages;
 
@@ -47,10 +45,6 @@ public class LoginController extends GenericForwardComposer<Component> {
 	private Textbox txtUsername;
 	@Wire
 	private Textbox txtPassword;
-	@Wire
-	private Toolbarbutton tbPortuguese;
-	@Wire
-	private Toolbarbutton tbEnglish;
 	
 	@WireVariable
 	private AccessManager accessManager;
@@ -62,16 +56,6 @@ public class LoginController extends GenericForwardComposer<Component> {
 		super.doAfterCompose(comp);
 		//hide(true);
 		accessManager = ManagerFactory.getAccessManager();
-	}
-
-	public void onClick$tbPortuguese(Event e) {
-		SessionHelper.lingua(Language.PORTUGUESE);
-		hide(false);
-	}
-
-	public void onClick$tbEnglish(Event e) {
-		SessionHelper.lingua(Language.ENGLISH);
-		hide(true);
 	}
 
 	
@@ -119,11 +103,6 @@ public class LoginController extends GenericForwardComposer<Component> {
 		} catch (EncryptionOperationNotPossibleException e) {
 			Messages.error_right(Labels.getLabel("incorrect.user.or.password"), btnLogin);
 		}
-	}
-
-	public void hide(boolean status) {
-		tbEnglish.setDisabled(status);
-		tbPortuguese.setDisabled(!status);
 	}
 	
 }

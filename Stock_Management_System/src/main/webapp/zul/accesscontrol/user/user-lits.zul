@@ -26,7 +26,6 @@
 				</combobox>
 			</div>
 		</div>
-		<div sclass="clean"></div>
 		<div>
 			<groupbox>
 				<caption label="${labels.user.list}"/>

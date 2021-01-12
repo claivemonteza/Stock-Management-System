@@ -18,9 +18,8 @@
 							</template>
 						</combobox>
 						<textbox id="txtNuit" readonly="true"
-							placeholder="${labels.nuit.record}" width="200px" height="40px" />
+							placeholder="${labels.nuit.record}" width="200px" height="20px" />
 					</hbox>
-					<div sclass="clean"></div>
 					<hbox>
 						<groupbox>
 							<caption label="${labels.address.record}" />

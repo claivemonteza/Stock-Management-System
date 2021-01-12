@@ -1,3 +1,5 @@
+Style
+
 * {
 	margin: 0px;
 	padding: 0px 0px;
@@ -23,13 +25,40 @@
 	padding: 2px;
 }
 
+.z-north-body, .z-south-body, .z-west-body, .z-center-body, .z-east-body {
+    line-height: 0px;
+    color: rgba(0,0,0,0.9);
 }
+
+.z-tabs {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    min-height: 37px;
+}
+
+.z-tabbox{
+	border:none;
+}
+
+.z-tabpanel {
+    border-top: 1px solid #d9d9d9;
+    padding: 0px;
+    zoom: 1;
+    color: rgba(0,0,0,0.9);
+}
+
 .container, .header, .section, .aside, .footer {
 	display: block;
 }
 
 .header {
-	height: 300px;
+	height: 30px;
+	display: flex;
 }
 
 .container {
@@ -37,38 +66,41 @@
 	border: none;
 }
 
-.logo {
-	color: black;
-	font-size: 30px;
+.logo{
+	color: #1c3bcd;
+	font-size: 3rem;
 	font-family: Algerian;
 }
 
-.logotipo {
-	color:#1c3bcd;
-	font-weight: bold;
-	font-size: 80px;
-	font-family: Papyrus;
+
+.z-menubar{
+	margin-top: 19px;
 }
 
 .z-menubar, .z-menu, .z-menu-content {
 	/*border-radius: 10px;*/
-	background: black;
-	color: white;
+	background:transparent;
+	color: black;
+	font-weight:bold;
 	border: none;
 }
 
 .z-menu-text, .z-menuitem-text {
-	font-size: 25px;
+	font-size: 14px;
+}
+
+.z-menu-content {
+    padding-right: 25px;
 }
 
 .z-menu-content:hover, .z-menuitem-content:hover {
 	color: #fff;
-	background-color: black; /*#e8f5ff*/
+	background-color: #0093f9; /*#e8f5ff*/
 }
 
 .z-menu-content:active {
 	color: #fff;
-	background-color: black;
+	background-color: #0093f9;
 }
 
 .z-menuitem-content:active {
@@ -78,17 +110,17 @@
 
 .z-menu-selected>.z-menu-content {
 	color: #fff;
-	background-color: black;
+	background-color: #0093f9;
 }
 
 .z-menuitem-selected>.z-menuitem-content {
 	color: #fff;
-	background-color: #0093f9
+	background-color: #0093f9;
 }
 
 .z-menupopup .z-menu-content:hover {
 	color: #fff;
-	background-color: black;
+	background-color: #0093f9;
 }
 
 .z-menupopup .z-menuitem-content:hover {
@@ -98,7 +130,7 @@
 
 .z-menupopup .z-menu-content:focus {
 	color: #fff;
-	background-color: black;
+	background-color:#0093f9;
 }
 
 .z-menupopup .z-menuitem-content:focus {
@@ -113,8 +145,8 @@
 }
 
 .grid {
-	padding-top: 5px;
-	padding-bottom: 35px;
+	/*padding-top: 5px;*/
+	padding-bottom: 30px;
 }
 
 .left {
@@ -150,33 +182,62 @@
 }
 
 .z-tab-content {
-	font-size: 30px;
+	font-size: 16px;
 	font-weight: bold;
 	font-family: Times New Roman;
 }
 
 
 .z-button {
-	font-size: 22px;
+	font-size: 12px;
 	font-style: normal;
-	height: 40px;
+	height: 19px;
+}
+
+.z-button {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    color: #fff;
+    min-height: 24px;
+    border: 2px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    padding: 3px 8px;
+    line-height: normal;
+    background-color: #0093f9;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    -moz-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    -o-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    -ms-box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .z-checkbox-content {
-	font-size: 22px;
+	font-size: 13px;
 }
 
 input[type="checkbox"] {
-	margin: 4px 10px 10px 10px;
-	width: 25px;
-	height: 25px
+	margin: 8px 8px 13px 13px;
+	width: 13px;
+	height: 13px;
 }
 
 .search .z-comboitem-text, .search .z-combobox-button, .combobox .z-combobox-input
 	{
-	font-size: 25px;
-	line-height: 25px;
-	height: 40px;
+	font-size: 14px;
+	line-height: 20px;
+	height: 20px;
 }
 
 .search .z-combobox-button {
@@ -184,20 +245,20 @@ input[type="checkbox"] {
 }
 
 .search .z-combobox-input {
-	width: 600px;
+	width: 460px;
 	border-radius: 15px 15px 15px 15px;
 }
 
 .z-comboitem-text, .z-combobox-input,  .z-combobox-input,
 	 .z-datebox-input,  .z-spinner-input,  .z-doublespinner-input
 	{
-	font-size: 25px;
+	font-size: 13px;
 	line-height: 25px;
-	height: 40px;
+	height: 23px;
 }
 
 .z-datebox-button,.z-bandbox-button,.z-combobox-button  {
-	font-size: 30px;
+	font-size: 13px;
 	min-height: 40px;
 	padding-top: 9px
 }
@@ -206,22 +267,27 @@ input[type="checkbox"] {
 
 .z-calendar-cell, .z-calendar-title, .z-calendar-icon .z-calendar-left,
 	.z-calendar-icon .z-calendar-right {
-	font-size: 22px;
+	font-size: 18px;
 }
 
 .z-calendar th{
-	font-size: 17px;
+	font-size: 14px;
 }
 
 .z-caption {
-	font-size: 30px;
+	font-size: 14px;
 	font-weight: bold;
 	font-family: Times New Roman;
 }
 
+.z-groupbox {
+    padding-top: 8px;
+    margin-right: 10px;
+}
+
 .listbox {
 	border: none;
-	height: 850px;
+	height: 380px;
 }
 
 .z-listbox-footer {
@@ -249,7 +315,18 @@ input[type="checkbox"] {
 
 .z-listheader-content, .z-listcell-content, .z-listgroup-content,
 	.z-listgroupfoot-content, .z-listfooter-content {
-	font-size: 22px; /**/
+	font-size: 11px; /**/
+}
+
+.z-listheader-content, .z-listcell-content, .z-listgroup-content, .z-listgroupfoot-content, .z-listfooter-content {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    color: rgba(0,0,0,0.9);
+    line-height: 1.3em;
+    overflow: hidden;
+    padding: 3px 8px;
 }
 
 .z-listgroup-open.z-listgroupfoot .z-listcell-content {
@@ -267,12 +344,14 @@ input[type="checkbox"] {
 
 .labelText, .z-textbox, .z-decimalbox, .z-intbox, .z-longbox,
 	.z-doublebox {
-	font-size: 25px;
-	line-height: 25px;
+	font-size: 14px;
+	line-height: 16px;
 }
 
 .footer-label {
-	font-size: 22px;
+	font-size: 12px;
 	font-family: Times New Roman;
 	font-weight: normal;
 }
+
+
