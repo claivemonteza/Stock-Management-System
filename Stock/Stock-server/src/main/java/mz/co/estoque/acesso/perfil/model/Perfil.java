@@ -1,6 +1,5 @@
 package mz.co.estoque.acesso.perfil.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +28,7 @@ import mz.co.estoque.Disponibilidade;
  */
 
 @Entity
-@Table(name = "profile")
+@Table(name = "perfil")
 public class Perfil extends Disponibilidade implements Comparable<Perfil> {
 
 	@Temporal(TemporalType.DATE)
@@ -40,7 +39,7 @@ public class Perfil extends Disponibilidade implements Comparable<Perfil> {
 	private String nome;
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-	private List<Permissao> transactions = new ArrayList<Permissao>();
+	private List<Permissao> permissoes;
 	
 	
 	/**
@@ -85,40 +84,40 @@ public class Perfil extends Disponibilidade implements Comparable<Perfil> {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param nome the name to set
 	 */
-	public void setName(String name) {
-		this.nome = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	/**
 	 * @return the transactions
 	 */
-	public List<Permissao> getTransactions() {
-		return transactions;
+	public List<Permissao> getPermissoes() {
+		return permissoes;
 	}
 
 	/**
-	 * @param transactions the transactions to set
+	 * @param permissoes the transactions to set
 	 */
-	public void setTransactions(List<Permissao> transactions) {
-		this.transactions = transactions;
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
 	}
 
 
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public Date getData() {
 		return data;
 	}
 
 
 	/**
-	 * @param date the date to set
+	 * @param data the date to set
 	 */
-	public void setDate(Date date) {
-		this.data = date;
+	public void setData(Date data) {
+		this.data = data;
 	}
 	
 }

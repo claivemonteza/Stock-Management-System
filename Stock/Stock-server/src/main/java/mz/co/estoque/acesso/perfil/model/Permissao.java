@@ -20,7 +20,7 @@ import mz.co.estoque.Disponibilidade;
  */
 
 @Entity
-@Table(name = "transaction")
+@Table(name = "permissao")
 public class Permissao extends Disponibilidade implements
 		Comparable<Permissao> {
 
@@ -30,10 +30,10 @@ public class Permissao extends Disponibilidade implements
 
 
 	@Column(nullable = false, unique = true)
-	private String code;
+	private String codigo;
 
 	@Column(nullable = false, unique = true)
-	private String name;
+	private String nome;
 
 	private String url;
 
@@ -47,7 +47,7 @@ public class Permissao extends Disponibilidade implements
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Permissao) {
-			return this.code.equals(((Permissao) obj).getCode());
+			return this.codigo.equals(((Permissao) obj).getCodigo());
 		}
 		return super.equals(obj);
 	}
@@ -57,29 +57,29 @@ public class Permissao extends Disponibilidade implements
 	 * This method will compare this class with another 
 	 *  with the same name.
 	 * 
-	 * @param transaction
+	 * @param permissao
 	 */
-	public int compareTo(Permissao transaction) {
-		return name.compareTo(transaction.getName());
+	public int compareTo(Permissao permissao) {
+		return nome.compareTo(permissao.getNome());
 	}
 	
 	@Override
 	public int hashCode() {
-		return getCode().hashCode();
+		return getCodigo().hashCode();
 	}
 
 	/**
 	 * @return the name
 	 */
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param nome the name to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	/**
@@ -99,15 +99,15 @@ public class Permissao extends Disponibilidade implements
 	/**
 	 * @return the code
 	 */
-	public String getCode() {
-		return code;
+	public String getCodigo() {
+		return codigo;
 	}
 
 	/**
-	 * @param code the code to set
+	 * @param codigo the code to set
 	 */
-	public void setCode(String code) {
-		this.code = code;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 
