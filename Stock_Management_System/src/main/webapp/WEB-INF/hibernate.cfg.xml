@@ -9,7 +9,7 @@
 		
 		<!-- Drop and re-create the database schema on startup -->
 		<!-- create, update, validate, create-drop -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 
 		<!-- Mapping -->
 

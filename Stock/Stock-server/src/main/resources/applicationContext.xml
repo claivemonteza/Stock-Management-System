@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${db.driverClassName}"></property>
+		<property name="url" value="${db.url}"></property>
+		<property name="username" value="${db.username}"></property>
+		<property name="password" value="${db.password}"></property>
+	</bean>
+
+
+	<!-- define Hibernate sessionFactory provided by Spring ORM -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="annotatedClasses">
+			<array>
+			<value>mz.co.stock.access.profiles.model.Profile</value>
+			<value>mz.co.stock.access.profiles.model.Transaction</value>
+			<value>mz.co.stock.access.users.model.User</value>
+			<value>mz.co.stock.items.batches.model.Batch</value>
+			<value>mz.co.stock.items.products.model.Product</value>
+			<!-- <value></value> -->
+			</array>
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- Drop and re-create the database schema on startup -->
+				<!-- create, create-only, create-drop, update, validate, none -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>
+	</bean>
+
+	
+	<!-- DAO -->
+
+	<bean id="ProfileDao"
+		class="mz.co.stock.access.profiles.dao.ProfileDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="TransactionDao"
+		class="mz.co.stock.access.profiles.dao.TransactionDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="UserDao"
+		class="mz.co.stock.access.users.dao.UserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<bean id="BatchDao"
+		class="mz.co.stock.items.batches.dao.BatchDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="ProductDao"
+		class="mz.co.stock.items.products.dao.ProductDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+
+
+	<!-- MANAGERS -->
+
+	<bean id="AccessManager"
+		class="mz.co.stock.access.AccessManagerImpl">
+		<property name="ProfileDao" ref="ProfileDao" />
+		<property name="TransactionDao" ref="TransactionDao" />
+		<property name="UserDao" ref="UserDao" />
+	</bean>
+	
+	<bean id="ItemManager"
+		class="mz.co.stock.items.ItemManagerImpl">
+		<property name="BatchDao" ref="BatchDao" />
+		<property name="ProductDao" ref="ProductDao" />
+	</bean>
+	
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>database.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- define Hibernate sessionFactory provided by Spring -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>
