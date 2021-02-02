@@ -15,7 +15,6 @@ import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import mz.co.stock.GenericDAO;
-import mz.co.stock.items.batches.model.Batch;
 import mz.co.stock.items.products.model.Product;
 
 /**
@@ -45,7 +44,7 @@ public class ProductDao extends GenericDAO<Product> {
 	public Set<String> allCategories() {
 		Set<String> categories = new HashSet<String>();
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select p.category from Product as p order by p.category ASC";
+			String hql = "from Product as p order by p.category ASC";
 			Query<Product> query = session.createQuery(hql, Product.class);
 			for (Product product : query.list()) {
 				categories.add(product.getCategory());
@@ -163,46 +162,6 @@ public class ProductDao extends GenericDAO<Product> {
 			e.printStackTrace();
 		}
 		return products;
-	}
-
-	/**
-	 * This method will search for all batches that have the same product.
-	 * 
-	 * @param product
-	 * @return list of objects
-	 */
-	public List<Batch> allBatches(Product product) {
-		List<Batch> batches = null;
-		try (Session session = getSessionFactory().openSession()) {
-			String hql = "from Batch as batch where batch.product=:product order by batch.date DESC";
-			Query<Batch> query = session.createQuery(hql, Batch.class);
-			query.setParameter("product", product);
-			batches = query.list();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		}
-		return batches;
-	}
-
-	/**
-	 * This method will search for all batches that have the same product.
-	 * 
-	 * @param product
-	 * @param active
-	 * @return list of objects
-	 */
-	public List<Batch> allBatches(Product product, boolean active) {
-		List<Batch> batches = null;
-		try (Session session = getSessionFactory().openSession()) {
-			String hql = "from Batch as batch where batch.product=:product and batch.active=:active order by batch.date DESC";
-			Query<Batch> query = session.createQuery(hql, Batch.class);
-			query.setParameter("product", product);
-			query.setParameter("active", active);
-			batches = query.list();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		}
-		return batches;
 	}
 
 	/**

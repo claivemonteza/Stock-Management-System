@@ -33,7 +33,7 @@ public enum Unity implements Internationalized{
 
 		@Override
 		public String getVariant() {
-			return "Cx";
+			return "box";
 		}
 	},
 	

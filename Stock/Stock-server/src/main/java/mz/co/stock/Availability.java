@@ -17,16 +17,16 @@ import javax.persistence.MappedSuperclass;
 public class Availability{
 	
 	@Column(nullable = false, columnDefinition = "bit")
-	private boolean activo = true;
+	private boolean active = true;
 
 	/**
 	 * This method will active and inactive.
 	 */
-	public void activoInactivo() {
-		if (this.activo) {
-			this.activo = false;
+	public void activeInactive() {
+		if (this.active) {
+			this.active = false;
 		} else {
-			this.activo = true;
+			this.active = true;
 		}
 	}
 
@@ -34,16 +34,8 @@ public class Availability{
 	 * 
 	 * @return
 	 */
-	public boolean isActivo() {
-		return activo;
+	public boolean isActive() {
+		return active;
 	}
-
-	/**
-	 * 
-	 * @param activo 
-	 */
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	}	
 	
 }

@@ -49,39 +49,44 @@ public class ItemManagerImpl implements ItemManager {
 	@Transactional
 	public void save(Batch batch)throws DataIntegrityViolationException, ConstraintViolationException,
 	SQLIntegrityConstraintViolationException {
-		this.batchDao.create(batch);
+		batchDao.create(batch);
 	}
 
 	@Transactional
 	public void update(Batch batch) throws DataIntegrityViolationException, ConstraintViolationException,
 	SQLIntegrityConstraintViolationException{
-		this.batchDao.update(batch);
+		batchDao.update(batch);
 	}
 
 	@Transactional
 	public void delete(Batch batch) throws IllegalArgumentException, DataIntegrityViolationException,
 	SQLIntegrityConstraintViolationException, BatchUpdateException{
-		this.batchDao.delete(batch);		
+		batchDao.delete(batch);		
 	}
 
 	@Transactional(readOnly = true)
 	public List<Batch> allBatches() throws NullPointerException{
-		return this.batchDao.getAll();
+		return batchDao.getAll();
 	}
 
 	@Transactional(readOnly = true)
 	public List<Batch> allBatches(boolean active) throws NullPointerException{
-		return this.batchDao.getAllActives(active);
+		return batchDao.getAllActives(active);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Batch> allBatches(Product product) throws NullPointerException {
+		return batchDao.allBatches(product);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Batch> allBatches(Product product, boolean active)throws NullPointerException{
+		return batchDao.allBatches(product, active);
 	}
 
 	@Transactional(readOnly = true)
 	public Batch findByBatchCode(String code) throws NullPointerException{
 		return this.batchDao.findByCode(code);
-	}
-
-	@Transactional(readOnly = true)
-	public Batch findByBatchCode(String code, boolean active) throws NullPointerException{
-		return this.batchDao.findByCode(code, active);
 	}
 
 	@Transactional(readOnly = true)
@@ -143,15 +148,25 @@ public class ItemManagerImpl implements ItemManager {
 	}
 
 	@Transactional
+	public void update(Product product) throws DataIntegrityViolationException, ConstraintViolationException,
+			SQLIntegrityConstraintViolationException {
+		productDao.update(product);
+	}
+	
+	@Transactional
 	public void delete(Product product) throws IllegalArgumentException, DataIntegrityViolationException,
 			SQLIntegrityConstraintViolationException, BatchUpdateException {
 		productDao.delete(product);
 	}
-
-	@Transactional
-	public void update(Product product) throws DataIntegrityViolationException, ConstraintViolationException,
-			SQLIntegrityConstraintViolationException {
-		productDao.update(product);
+	
+	@Transactional(readOnly = true)
+	public Product findByCode(String code) throws NullPointerException {
+		return productDao.findByCode(code);
+	}
+	
+	@Transactional(readOnly = true)
+	public Product findByName(String name) throws NullPointerException {
+		return productDao.findByName(name);
 	}
 	
 	@Transactional(readOnly = true)
@@ -167,36 +182,6 @@ public class ItemManagerImpl implements ItemManager {
 	@Transactional(readOnly = true)
 	public List<Product> allProducts(boolean active) throws NullPointerException {
 		return productDao.allProducts(active);
-	}
-
-	@Transactional(readOnly = true)
-	public Product findByName(String name) throws NullPointerException {
-		return productDao.findByName(name);
-	}
-
-	@Transactional(readOnly = true)
-	public Product findByName(String name, boolean active) throws NullPointerException {
-		return productDao.findByName(name, active);
-	}
-
-	@Transactional(readOnly = true)
-	public List<Batch> allBatches(Product product) throws NullPointerException {
-		return productDao.allBatches(product);
-	}
-	
-	@Transactional(readOnly = true)
-	public List<Batch> allBatches(Product product, boolean active)throws NullPointerException{
-		return productDao.allBatches(product, active);
-	}
-
-	@Transactional(readOnly = true)
-	public Product findByCode(String code) throws NullPointerException {
-		return productDao.findByCode(code);
-	}
-
-	@Transactional(readOnly = true)
-	public Product findByCode(String code, boolean active) throws NullPointerException {
-		return productDao.findByCode(code, active);
 	}
 
 	@Override

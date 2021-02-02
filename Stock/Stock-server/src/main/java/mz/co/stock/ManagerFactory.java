@@ -1,7 +1,5 @@
 package mz.co.stock;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -27,14 +25,16 @@ public class ManagerFactory {
 		return (AccessManager) context.getBean("AccessManager");
 	}
 	
+	public static ItemManager getItemManager() {
+		return (ItemManager) context.getBean("ItemManager");
+	}
+	/*
 	public static CompanyManager getCompanyManager() {
 		return (CompanyManager) SpringUtil.getBean("CompanyManager",
 				CompanyManager.class);
 	}
 	
-	public static ItemManager getItemManager() {
-		return (ItemManager) context.getBean("ItemManager");
-	}
+	
 	
 	public static StockManager getStockManager() {
 		return (StockManager) SpringUtil.getBean("StockManager",
@@ -52,4 +52,5 @@ public class ManagerFactory {
 		return (BankManager) SpringUtil.getBean("BankManager",
 				BankManager.class);
 	}
+	*/
 }

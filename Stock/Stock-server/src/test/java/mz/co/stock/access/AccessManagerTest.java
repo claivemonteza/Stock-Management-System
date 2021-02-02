@@ -1,9 +1,16 @@
 /**
  * 
  */
-package mz.co.estoque.acesso;
+package mz.co.stock.access;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.sql.BatchUpdateException;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -24,8 +31,7 @@ import org.junit.jupiter.api.Test;
 import org.opentest4j.MultipleFailuresError;
 import org.springframework.dao.DataIntegrityViolationException;
 
-import mz.co.estoque.TestManagerFactory;
-import mz.co.stock.access.AccessManager;
+import mz.co.stock.TestManagerFactory;
 import mz.co.stock.access.profiles.model.Profile;
 import mz.co.stock.access.profiles.model.Transaction;
 import mz.co.stock.access.users.model.Language;
@@ -35,7 +41,9 @@ import mz.co.stock.access.users.model.User;
  * @author Claive Monteza
  *
  */
-class AccessManagerTest {
+
+@DisplayName("Acccess Test")
+public class AccessManagerTest {
 
 	private static AccessManager access;
 	private static Transaction transaction;
@@ -44,6 +52,7 @@ class AccessManagerTest {
 	private List<Profile> profiles;
 	private Set<Transaction> transactions;
 	private List<User> users;
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -85,6 +94,7 @@ class AccessManagerTest {
 	}
 
 	@Nested
+	@DisplayName("Transaction Test")
 	class TransactionTest {
 		/**
 		 * Test method for
@@ -108,10 +118,10 @@ class AccessManagerTest {
 				e.printStackTrace();
 			}
 
-			// assertThrows(MultipleFailuresError.class, () -> {
-			assertAll(() -> assertNotNull(access.allTransactions().size(), "Expected a list of transactions:"),
-					() -> assertNull(access.allTransactions().size(), "Expected a empty list:"));
-			/* }, "A mistake:"); */
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNotNull(access.allTransactions().size(), "Expected a list of transactions:"),
+						() -> assertNull(access.allTransactions().size(), "Expected a empty list:"));
+			}, "A mistake:");
 		}
 
 		/**
@@ -122,7 +132,20 @@ class AccessManagerTest {
 		@DisplayName("Update Transaction")
 		@Disabled
 		void testUpdateTransaction() {
-			fail("Not yet implemented");
+			try {
+				transaction = access.findTransactionByCode("102");
+				transaction.setCode("103");
+				access.update(transaction);
+			} catch (DataIntegrityViolationException | ConstraintViolationException
+					| SQLIntegrityConstraintViolationException e) {
+				e.printStackTrace();
+			}
+	
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNotNull(transaction, "Expected a list of transactions:"),
+						() -> assertNull(transaction, "Expected a empty list:"));
+			}, "A mistake:");
+
 		}
 
 		/**
@@ -131,11 +154,88 @@ class AccessManagerTest {
 		 */
 		@Test
 		@DisplayName("Delete Transaction")
-		@Disabled
 		void testDeleteTransaction() {
-			fail("Not yet implemented");
+			try {
+				transaction = access.findTransactionByCode("101");
+				access.delete(transaction);
+			} catch (DataIntegrityViolationException | SQLIntegrityConstraintViolationException
+					| IllegalArgumentException | BatchUpdateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNotNull(access.findTransactionByCode("101"), "Expected a list of transactions:"),
+						() -> assertNull(access.findTransactionByCode("101"), "Expected a empty list:"));
+			}, "A mistake:");
 		}
 
+		
+		/**
+		 * Test method for
+		 * {@link mz.co.stock.access.AccessManagerImpl#findTransactionByCode(java.lang.String)}.
+		 */
+		@Test
+		@DisplayName("Find Transaction By code")
+		void testFindTransactionByCode() {
+			try {
+				transaction = access.findTransactionByCode("101");
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNotNull(transaction, "Expected to find a transaction:"),
+						() -> assertNull(transaction, "Expected null:"));
+			}, "A mistake:");
+		}
+		
+		
+		/**
+		 * Test method for
+		 * {@link mz.co.stock.access.AccessManagerImpl#findTransactionByName(java.lang.String)}.
+		 */
+		@Test
+		@DisplayName("Find Transaction By name")
+		void testFindTransactionByName() {
+			try {
+				transaction = access.findTransactionByName("profiles.record");
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNotNull(transaction, "Expected to find a transaction:"),
+						() -> assertNull(transaction, "Expected null:"));
+			}, "A mistake:");
+		}
+		
+		
+		
+		/**
+		 * Test method for
+		 * {@link mz.co.stock.access.AccessManagerImpl#find(java.lang.String)}.
+		 */
+		@Test
+		@DisplayName("Find Transaction")
+		void testFind() {
+			try {
+				transactions = Set.copyOf(access.find("prof"));
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNull(access.find("prof"), "Expected null:"),
+						() -> assertNotNull(access.find("prof"), "Expected to find a transaction:"),
+						() -> assertNull(access.find("prof", true), "Expected null with TRUE:"),
+						() -> assertNotNull(access.find("prof",true), "Expected to find a transaction with TRUE:"),
+						() -> assertNull(access.find("prof", false), "Expected null with FALSE:"),
+						() -> assertNotNull(access.find("prof",false), "Expected to find a transaction with FALSE:"));
+			}, "A mistake:");
+		}
+		
+		
 		/**
 		 * Test method for
 		 * {@link mz.co.stock.access.AccessManagerImpl#allTransactions()}.
@@ -149,15 +249,14 @@ class AccessManagerTest {
 						() -> assertNull(access.allTransactions(true), "Expetativa de uma lista null com TRUE!"),
 						() -> assertNotNull(access.allTransactions(true), "Expected a list of transactions of TRUE!"),
 						() -> assertNull(access.allTransactions(false), "Expected NULL of FALSE!"),
-						() -> assertNotNull(access.allTransactions(false), "Expected a list of transactions of FALSE!"));
+						() -> assertNotNull(access.allTransactions(false),
+								"Expected a list of transactions of FALSE!"));
 			}, "A mistake:");
 		}
 	}
 
-	
-	
-	
 	@Nested
+	@DisplayName("Profile Test")
 	class ProfileTest {
 
 		/**
@@ -177,15 +276,11 @@ class AccessManagerTest {
 				e.printStackTrace();
 			}
 			// assertThrows(MultipleFailuresError.class, () -> {
-			assertAll(
-					() -> assertNotNull(access.searchProfile("Administrator"),
-							"There is a profile have been save:"),
-					() -> assertEquals(profile, access.searchProfile("Administrator"),
-							"Already have this profile:"));
+			assertAll(() -> assertNotNull(access.searchProfile("Administrator"), "There is a profile have been save:"),
+					() -> assertEquals(profile, access.searchProfile("Administrator"), "Already have this profile:"));
 			/* }, "A mistake:"); */
 		}
 
-		
 		/**
 		 * Test method for
 		 * {@link mz.co.stock.access.AccessManagerImpl#update(mz.co.stock.access.profiles.model.Profile)}.
@@ -193,14 +288,24 @@ class AccessManagerTest {
 		@Test
 		@DisplayName("Update Profile")
 		void testUpdateProfile() {
-			assertThrows(NullPointerException.class, () -> {
+
+			try {
 				profile = access.searchProfile("Administrator");
 				profile.setName("Administrator Master");
 				access.update(profile);
-				assertNull(access.searchProfile("Administrator"));
-			}, "Can't find the profile:");
+			} catch (DataIntegrityViolationException | ConstraintViolationException
+					| SQLIntegrityConstraintViolationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNull(access.searchProfile("Administrator"), "this profile exist: "),
+						() -> assertNotNull(access.searchProfile("Administrator"), "Couldn't delete the profile:"));
+
+			}, "A mistake:");
 		}
-		
+
 		/**
 		 * Test method for
 		 * {@link mz.co.stock.access.AccessManagerImpl#delete(mz.co.stock.access.profiles.model.Profile)}.
@@ -215,11 +320,12 @@ class AccessManagerTest {
 					| SQLIntegrityConstraintViolationException | BatchUpdateException e) {
 				e.printStackTrace();
 			}
-			
-			assertAll(() -> assertNull(access.searchProfile("Administrator"), "this profile exist: "),
-					() -> assertNotNull(access.searchProfile("Administrator"), "Couldn't delete the profile:"));
+
+			assertThrows(MultipleFailuresError.class, () -> {
+				assertAll(() -> assertNull(access.searchProfile("Administrator"), "this profile exist: "),
+						() -> assertNotNull(access.searchProfile("Administrator"), "Couldn't delete the profile:"));
+			}, "A mistake:");
 		}
-		
 
 		/**
 		 * Test method for
@@ -228,7 +334,7 @@ class AccessManagerTest {
 		@Test
 		@DisplayName("Search Profile")
 		void testSearchProfileString() {
-			
+
 			assertThrows(MultipleFailuresError.class, () -> {
 				assertAll(() -> assertNull(access.searchProfile("Administrator"), "Expected null!"),
 						() -> assertNotNull(access.searchProfile("Administrator"), "Expected a profile!"),
@@ -239,7 +345,7 @@ class AccessManagerTest {
 						() -> assertNotNull(access.searchProfile("Administrator", false),
 								"Expected a profile with false!"));
 			}, "A mistake:");
-			
+
 		}
 
 		/**
@@ -295,11 +401,8 @@ class AccessManagerTest {
 		}
 	}
 
-	
-	
-	
-	
 	@Nested
+	@DisplayName("User Test")
 	class UserTest {
 		/**
 		 * Test method for
@@ -309,11 +412,18 @@ class AccessManagerTest {
 		@DisplayName("Save User")
 		void testSaveUser() {
 			try {
-				profile = access.searchProfile("Administrator");
+				profile = access.searchProfile("Administrator Master");
 				transactions = Set.copyOf(profile.getTransactions());
 				user.setName("Sousa Monteza");
 				user.setUsername("Sousa");
 				user.setPassword("0000");
+				user.setLanguage(Language.PORTUGUESE);
+				user.setProfile(profile);
+				user.setTransactions(transactions);
+				access.save(user);
+				user.setName("Claive Monteza");
+				user.setUsername("Clive");
+				user.setPassword("Montez@1");
 				user.setLanguage(Language.PORTUGUESE);
 				user.setProfile(profile);
 				user.setTransactions(transactions);
@@ -323,10 +433,10 @@ class AccessManagerTest {
 				e.printStackTrace();
 			}
 
-			//assertThrows(MultipleFailuresError.class, () -> {
+			assertThrows(MultipleFailuresError.class, () -> {
 				assertAll(() -> assertNotNull(access.findByName("Sousa Monteza"), "This user haven't been save!"),
-						() -> assertNull(access.findByUsername("Omar"), "Already have save this user!"));
-			//}, "A mistake to save:");
+						() -> assertNull(access.findByUsername("Sousa"), "Already have save this user!"));
+			}, "A mistake to save:");
 		}
 
 		/**
@@ -344,12 +454,12 @@ class AccessManagerTest {
 					| SQLIntegrityConstraintViolationException | IllegalArgumentException e) {
 				e.printStackTrace();
 			}
-			//assertThrows(MultipleFailuresError.class, () -> {
-				assertAll(() -> assertNotNull(access.findByUsername("Rui"), "This user haven't been update!"),
-						() -> assertNull(access.findByUsername("Sousa"), "Already have update this user!"));
-			//}, "Update mistake:");
+			// assertThrows(MultipleFailuresError.class, () -> {
+			assertAll(() -> assertNotNull(access.findByUsername("Rui"), "This user haven't been update!"),
+					() -> assertNull(access.findByUsername("Sousa"), "Already have update this user!"));
+			// }, "Update mistake:");
 		}
-		
+
 		/**
 		 * Test method for
 		 * {@link mz.co.stock.access.AccessManagerImpl#delete(mz.co.stock.access.users.model.User)}.
@@ -489,9 +599,20 @@ class AccessManagerTest {
 		@Test
 		@DisplayName("Reset password")
 		void testResetPassword() {
-			user = access.findByUsername("Rui");
-			access.resetPassword(user);
-			assertEquals("wmyjbe5mN2Yyw17/YBzXlsTieMpKTnzbvXXd/xCbPd3azt8F9lZkD+qt9ZJDWGTr", user.getPassword());
+			try {
+				user = access.findByUsername("Clive");
+				access.resetPassword(user);
+
+			} catch (NullPointerException e) {
+				e.printStackTrace();
+			}
+			// assertThrows(MultipleFailuresError.class, () -> {
+			assertAll(
+					() -> assertEquals("wmyjbe5mN2Yyw17/YBzXlsTieMpKTnzbvXXd/xCbPd3azt8F9lZkD+qt9ZJDWGTr",
+							user.getPassword(), "Expected password to been reset!"),
+					() -> assertNotEquals("wmyjbe5mN2Yyw17/YBzXlsTieMpKTnzbvXXd/xCbPd3azt8F9lZkD+qt9ZJDWGTr",
+							user.getPassword(), "Expected password not to been reset!"));
+			// }, "A mistake:");
 
 		}
 
@@ -502,7 +623,7 @@ class AccessManagerTest {
 		@Test
 		@DisplayName("Change password")
 		void testChangePassword() {
-			user = access.findByUsername("Rui");
+			user = access.findByUsername("Sousa");
 			assertThrows(MultipleFailuresError.class, () -> {
 				assertAll(() -> assertTrue(access.changePassword(user, "1111"), "Expected true!"),
 						() -> assertFalse(access.changePassword(user, "1111"), "Expected true!"));

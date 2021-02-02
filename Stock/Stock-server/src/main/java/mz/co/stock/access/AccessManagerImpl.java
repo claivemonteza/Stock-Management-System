@@ -60,6 +60,55 @@ public class AccessManagerImpl implements AccessManager {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	
+	
+	@Transactional
+	public void save(Transaction transaction) throws DataIntegrityViolationException, ConstraintViolationException,
+	SQLIntegrityConstraintViolationException {
+		transactionDao.create(transaction);
+	}
+	
+	@Transactional
+	public void update(Transaction transaction) throws DataIntegrityViolationException, ConstraintViolationException,
+	SQLIntegrityConstraintViolationException{
+		transactionDao.update(transaction);
+	}
+	
+	@Transactional   
+	public void delete(Transaction transaction)throws IllegalArgumentException, DataIntegrityViolationException,
+	SQLIntegrityConstraintViolationException, BatchUpdateException {
+		transactionDao.delete(transaction);
+	}
+	
+	@Transactional(readOnly = true)
+	public Transaction findTransactionByCode(String code) throws NullPointerException {
+		return transactionDao.findByCode(code);
+	}
+
+	@Transactional(readOnly = true)
+	public Transaction findTransactionByName(String name) throws NullPointerException {
+		return transactionDao.findByName(name);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Transaction> find(String str) throws NullPointerException {
+		return transactionDao.find(str);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Transaction> find(String str, boolean active) throws NullPointerException {
+		return transactionDao.find(str, active);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Transaction> allTransactions(boolean active) {
+		return transactionDao.allPermissions(active);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Transaction> allTransactions() {
+		return transactionDao.getAll();
+	}
 
 	@Transactional
 	public void save(Profile profile) throws DataIntegrityViolationException, ConstraintViolationException,
@@ -114,34 +163,6 @@ public class AccessManagerImpl implements AccessManager {
 	@Transactional(readOnly = true)
 	public List<Profile> allProfiles() throws NullPointerException {
 		return profileDao.getAll();
-	}
-
-	@Transactional
-	public void save(Transaction transaction) throws DataIntegrityViolationException, ConstraintViolationException,
-	SQLIntegrityConstraintViolationException {
-		transactionDao.create(transaction);
-	}
-	
-	@Transactional
-	public void update(Transaction transaction) throws DataIntegrityViolationException, ConstraintViolationException,
-	SQLIntegrityConstraintViolationException{
-		transactionDao.update(transaction);
-	}
-	
-	@Transactional   
-	public void delete(Transaction transaction)throws IllegalArgumentException, DataIntegrityViolationException,
-	SQLIntegrityConstraintViolationException, BatchUpdateException {
-		transactionDao.delete(transaction);
-	}
-	
-	@Transactional(readOnly = true)
-	public List<Transaction> allTransactions(boolean active) {
-		return transactionDao.allPermissions(active);
-	}
-
-	@Transactional(readOnly = true)
-	public List<Transaction> allTransactions() {
-		return transactionDao.getAll();
 	}
 
 	@Transactional

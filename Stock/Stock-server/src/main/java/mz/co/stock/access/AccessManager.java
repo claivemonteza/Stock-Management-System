@@ -65,9 +65,17 @@ public interface AccessManager extends UserDetailsService{
 	public void delete(Transaction transaction)throws IllegalArgumentException, DataIntegrityViolationException,
 	SQLIntegrityConstraintViolationException, BatchUpdateException;
 	
-	public List<Transaction> allTransactions(boolean active);
+	public Transaction findTransactionByCode(String code)throws NullPointerException;
 	
-	public List<Transaction> allTransactions();
+	public Transaction findTransactionByName(String name)throws NullPointerException;
+	
+	public List<Transaction> find(String str)throws NullPointerException;
+	
+	public List<Transaction> find(String str, boolean active)throws NullPointerException;
+	
+	public List<Transaction> allTransactions(boolean active)throws NullPointerException;
+	
+	public List<Transaction> allTransactions()throws NullPointerException;
 	
 	public void save(User user)throws ConstraintViolationException, DataIntegrityViolationException, SQLIntegrityConstraintViolationException;
 

@@ -1,4 +1,4 @@
-package mz.co.estoque;
+package mz.co.stock;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

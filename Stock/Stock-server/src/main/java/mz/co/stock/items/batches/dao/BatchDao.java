@@ -126,6 +126,46 @@ public class BatchDao extends GenericDAO<Batch> {
 		}
 		return batches;
 	}
+	
+	/**
+	 * This method will search for all batches that have the same product.
+	 * 
+	 * @param product
+	 * @param active
+	 * @return list of objects
+	 */
+	public List<Batch> allBatches(Product product, boolean active) {
+		List<Batch> batches = null;
+		try (Session session = getSessionFactory().openSession()) {
+			String hql = "from Batch as batch where batch.product=:product and batch.active=:active order by batch.date DESC";
+			Query<Batch> query = session.createQuery(hql, Batch.class);
+			query.setParameter("product", product);
+			query.setParameter("active", active);
+			batches = query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return batches;
+	}
+	
+	/**
+	 * This method will search for all batches that have the same product.
+	 * 
+	 * @param product
+	 * @return list of objects
+	 */
+	public List<Batch> allBatches(Product product) {
+		List<Batch> batches = null;
+		try (Session session = getSessionFactory().openSession()) {
+			String hql = "from Batch as batch where batch.product=:product order by batch.date DESC";
+			Query<Batch> query = session.createQuery(hql, Batch.class);
+			query.setParameter("product", product);
+			batches = query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		return batches;
+	}
 
 	/**
 	 * Search all batches that have expiration date
@@ -175,14 +215,18 @@ public class BatchDao extends GenericDAO<Batch> {
 	public Integer calculateAmountOfBatchWhereActive(Product product, boolean active) {
 		int value = 0;
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select SUM(b.amount) from Batch as b where b.product=:product and b.active=:active";
+			String hql = "from Batch as b where b.product=:product and b.active=:active";
 			Query<Batch> query = session.createQuery(hql, Batch.class);
 			query.setParameter("product", product);
 			query.setParameter("active", active);
-			value = Integer.parseInt(String.valueOf(query.uniqueResult()));
+			List<Batch> batches = query.getResultList();
+			for (Batch batch : batches) {
+				value =+ batch.getAmount();
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
+		//return Integer.parseInt(String.valueOf(((Long) query.uniqueResult()).longValue()));
 		return value;
 	}
 
@@ -195,10 +239,13 @@ public class BatchDao extends GenericDAO<Batch> {
 	public Integer calculateAmount(Product product) {
 		int value = 0;
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select SUM(b.amount) from Batch as b where b.product=:product";
+			String hql = "from Batch as b where b.product=:product";
 			Query<Batch> query = session.createQuery(hql, Batch.class);
 			query.setParameter("product", product);
-			value = Integer.parseInt(String.valueOf(query.uniqueResult()));
+			List<Batch> batches = query.getResultList();
+			for (Batch batch : batches) {
+				value =+ batch.getAmount();
+			}
 		}catch (HibernateException e) {
 			e.printStackTrace();
 		}
@@ -213,10 +260,13 @@ public class BatchDao extends GenericDAO<Batch> {
 	public double calculateCost(Product product) {
 		double value = 0.00;
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select SUM(b.costPrice) from Batch as b where b.product=:product";
+			String hql = "from Batch as b where b.product=:product";
 			Query<Batch> query =session.createQuery(hql, Batch.class);
 			query.setParameter("product", product);
-			value = Double.parseDouble(String.valueOf(query.uniqueResult()));
+			List<Batch> batches = query.getResultList();
+			for (Batch batch : batches) {
+				value =+ batch.getCostPrice();
+			}
 		}catch (HibernateException e) {
 			e.printStackTrace();
 		}
@@ -233,11 +283,14 @@ public class BatchDao extends GenericDAO<Batch> {
 	public double calculateCostOfBatchActive(Product product, boolean active) {
 		double value = 0.00;
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select SUM(b.costPrice) from Batch as b where b.product=:product and b.active=:active";
+			String hql = "from Batch as b where b.product=:product and b.active=:active";
 			Query<Batch> query = session.createQuery(hql,Batch.class);
 			query.setParameter("product", product);
 			query.setParameter("active", active);
-			value = Double.parseDouble(String.valueOf(query.uniqueResult()));
+			List<Batch> batches = query.getResultList();
+			for (Batch batch : batches) {
+				value =+ batch.getCostPrice();
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
@@ -253,10 +306,13 @@ public class BatchDao extends GenericDAO<Batch> {
 	public double calculateSale(Product product) {
 		double value = 0.00;
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select SUM(b.salePrice) from Batch as b where b.product=:product";
+			String hql = "from Batch as b where b.product=:product";
 			Query<Batch> query = session.createQuery(hql, Batch.class);
 			query.setParameter("product", product);
-			value = Double.parseDouble(String.valueOf(query.uniqueResult()));
+			List<Batch> batches = query.getResultList();
+			for (Batch batch : batches) {
+				value =+ batch.getSalePrice();
+			}
 		}catch (HibernateException e) {
 			e.printStackTrace();
 		}
@@ -273,11 +329,14 @@ public class BatchDao extends GenericDAO<Batch> {
 	public double calculateSaleOfBatchActive(Product product, boolean active) {
 		double value = 0.00;
 		try (Session session = getSessionFactory().openSession()) {
-			String hql = "Select SUM(b.salePrice) from Batch as b where b.product=:product and b.active=:active";
+			String hql = "from Batch as b where b.product=:product and b.active=:active";
 			Query<Batch> query = session.createQuery(hql, Batch.class);
 			query.setParameter("product", product);
 			query.setParameter("active", active);
-			value = Double.parseDouble(String.valueOf(query.uniqueResult()));
+			List<Batch> batches = query.getResultList();
+			for (Batch batch : batches) {
+				value =+ batch.getSalePrice();
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
